@@ -30,6 +30,17 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         return redirect()->intended(RouteServiceProvider::HOME);
+
+        $credentials = $request->only('email','password');
+
+        if(Auth::attempt($credentials)){
+            return redirect()->route('dashbord');
+        } else if(Auth::guard('paciente')->attempt($credentials)){
+            return redirect()->route('paciente.dashbord');
+        }
+        else if(Auth::guard('médico')->attempt($credentials)){
+            return redirect()->route('médico.dashbord');
+        }
     }
 
     /**
@@ -43,6 +54,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }

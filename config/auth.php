@@ -40,6 +40,18 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'paciente' => [
+            'driver' => 'session',
+            'provider' => 'pacientes',
+        ],
+
+        'médico' => [
+            'driver' => 'session',
+            'provider' => 'médicos',
+        ],
+        
+
     ],
 
     /*
@@ -63,6 +75,16 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'pacientes' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Paciente::class,
+        ],
+
+        'médicos' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Médico::class,
         ],
 
         // 'users' => [
