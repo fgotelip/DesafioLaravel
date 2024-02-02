@@ -26,6 +26,7 @@
                             required autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            <x-secondary-button>Cadastro</x-secondary-button>
         </div>
 
         <!-- Confirm Password -->

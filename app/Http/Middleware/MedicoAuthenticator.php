@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class MédicoAuthenticator
+class MedicoAuthenticator
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,7 @@ class MédicoAuthenticator
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::guard('médico'->check())) {
+        if(Auth::guard('medico')->check() ){
             return $next($request);
         }
         

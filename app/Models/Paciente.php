@@ -21,6 +21,11 @@ class Paciente extends Authenticatable
         'name',
         'email',
         'password',
+        'wasbornat',
+        'adress',
+        'tell',
+        'cpf',
+        'typeofblood',
     ];
 
     /**

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('médicos', function (Blueprint $table) {
+        Schema::create('medicos', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
@@ -26,7 +26,7 @@ return new class extends Migration
             #$table->longblob('pic')->nullable();
             /*
             $table->integer('specialtyname')-unsigned();
-            $table->foreign('specialtyname')->references('name')->on('')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('specialtyname')->references('id')->on('')->onDelete('cascade')->onUpdate('cascade');
              - falta criar a tabela
             */
             $table->rememberToken();
@@ -39,6 +39,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('médicos');
+        Schema::dropIfExists('medicos');
     }
 };

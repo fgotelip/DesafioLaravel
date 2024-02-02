@@ -15,14 +15,20 @@
     </head>
     <body>
             @if (Route::has('login'))
-                <div class="flex justify-center items-center">
+                <div class="flex justify-center items-center h-screen w-full space-x-10">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
+                        <a href="{{ url('/dashboard') }}" class="bg-gray-400 text-3xl font-semibold text-gray-600
+                         hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline 
+                         focus:outline-2 focus:rounded-sm focus:outline-red-500 rounded-full px-6 py-2">Dashboard</a>
                     @else
-                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Entrar</a>
+                        <a href="{{ route('login') }}" class="bg-gray-400 text-3xl font-semibold text-gray-600
+                         hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline 
+                         focus:outline-2 focus:rounded-sm focus:outline-red-500 rounded-full px-6 py-2">Entrar</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Cadastrar</a>
+                            <a href="{{ route('register') }}" class="bg-gray-400 text-3xl font-semibold text-gray-600
+                         hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline 
+                         focus:outline-2 focus:rounded-sm focus:outline-red-500 rounded-full px-6 py-2">Cadastrar</a>
                         @endif
                     @endauth
                 </div>

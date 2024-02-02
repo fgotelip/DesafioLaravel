@@ -48,8 +48,8 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\PacienteAuthenticator::class,
         ],
 
-        'médico' => [
-            \App\Http\Middleware\MédicoAuthenticator::class,
+        'medico' => [
+            \App\Http\Middleware\MedicoAuthenticator::class,
         ]
         
     ];

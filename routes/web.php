@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+//-SEED
+//Hash::make('suaSenha');
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,15 +22,19 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
+
+    
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('paciente')->group(function () {
-    Route::get('/dashbord/paciente');
-})->name('paciente.dashbord');
+Route::middleware(['paciente'])->group(function () {
+    Route::get('/dashboard/paciente', function(){
+        echo "Dashboard do Paciente";
+    })->name('paciente.dashboard');
+});
 
-Route::middleware('médico')->group(function () {
-    Route::get('/dashbord/médico');
-})->name('médico.dashbord');
+Route::middleware('medico')->group(function () {
+    Route::get('/dashboard/medico');
+})->name('medico.dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

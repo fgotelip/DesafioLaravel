@@ -25,7 +25,7 @@ return new class extends Migration
             #$table->longblob('pic')->nullable();
             /*
             $table->integer('hcpname')-unsigned();
-            $table->foreign('hcpname')->references('name')->on('')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('hcpname')->references('id')->on('')->onDelete('cascade')->onUpdate('cascade');
              - falta criar a tabela
             */
             $table->rememberToken();

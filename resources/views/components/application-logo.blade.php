@@ -1,1 +1,1 @@
-<img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fw7.pngwing.com%2Fpngs%2F825%2F525%2Fpng-transparent-logo-cross-red-hospital-medical-office-blue-logo-color-thumbnail.png&tbnid=9A1OIYcucPtM-M&vet=12ahUKEwiljMDo2IiEAxWIHrkGHXAUAaMQMygRegQIARB3..i&imgrefurl=https%3A%2F%2Fwww.pngwing.com%2Fpt%2Fsearch%3Fq%3Dhospital%2BLogo&docid=nsevhcwJEMzshM&w=360&h=360&q=logo%20hospital&ved=2ahUKEwiljMDo2IiEAxWIHrkGHXAUAaMQMygRegQIARB3" class="w-60">
+<img src="" alt="Logo">

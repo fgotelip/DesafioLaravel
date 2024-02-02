@@ -46,11 +46,10 @@ return [
             'provider' => 'pacientes',
         ],
 
-        'médico' => [
+        'medico' => [
             'driver' => 'session',
-            'provider' => 'médicos',
+            'provider' => 'medicos',
         ],
-        
 
     ],
 
@@ -82,9 +81,9 @@ return [
             'model' => App\Models\Paciente::class,
         ],
 
-        'médicos' => [
+        'medicos' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Médico::class,
+            'model' => App\Models\Medico::class,
         ],
 
         // 'users' => [
