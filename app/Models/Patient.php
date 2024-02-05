@@ -22,7 +22,7 @@ class Patient extends Authenticatable
         'email',
         'password',
         'wasbornat',
-        'adress',
+        'address',
         'tell',
         'cpf',
         'typeofblood',

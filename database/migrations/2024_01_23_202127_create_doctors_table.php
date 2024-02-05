@@ -18,10 +18,10 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->date('wasbornat');
-            $table->string('adress');
+            $table->string('address');
             $table->string('tell');
             $table->string('cpf');
-            $table->time('workhours');
+            $table->string('workhours');
             $table->integer('crm');
             #$table->longblob('pic')->nullable();
             /*
