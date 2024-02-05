@@ -12,6 +12,13 @@
                     {{ __("You're logged in!") }}
                 </div>
             </div>
+                <div class="flex flex-col mt-9 space-y-4">
+                    
+                    <x-primary-button>Paciente</x-primary-button>
+                    <x-primary-button>Médicos</x-primary-button>
+                    <x-primary-button>Especialidades</x-primary-button>
+                    <x-primary-button>Planos de Saúde</x-primary-button>
+                </div>
+            </div>
         </div>
-    </div>
 </x-app-layout>

@@ -21,6 +21,12 @@ class Doctor extends Authenticatable
         'name',
         'email',
         'password',
+        'wasborat',
+        'adress',
+        'tell',
+        'cpf',
+        'workhours',
+        'crm',
     ];
 
     /**
