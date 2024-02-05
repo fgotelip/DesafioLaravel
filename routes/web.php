@@ -26,15 +26,17 @@ Route::get('/dashboard', function () {
     
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware(['paciente'])->group(function () {
+Route::middleware(['patient'])->group(function () {
     Route::get('/dashboard/paciente', function(){
         echo "Dashboard do Paciente";
-    })->name('paciente.dashboard');
+    })->name('patient.dashboard');
 });
 
-Route::middleware('medico')->group(function () {
-    Route::get('/dashboard/medico');
-})->name('medico.dashboard');
+Route::middleware(['doctor'])->group(function () {
+    Route::get('/dashboard/medico', function(){
+        echo "Dashboard do Médico";
+    })->name('doctor.dashboard');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -44,12 +44,12 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
-        'paciente' => [
-            \App\Http\Middleware\PacienteAuthenticator::class,
+        'patient' => [
+            \App\Http\Middleware\PatientAuthenticator::class,
         ],
 
-        'medico' => [
-            \App\Http\Middleware\MedicoAuthenticator::class,
+        'doctor' => [
+            \App\Http\Middleware\DoctorAuthenticator::class,
         ]
         
     ];

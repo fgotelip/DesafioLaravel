@@ -41,14 +41,14 @@ return [
             'provider' => 'users',
         ],
 
-        'paciente' => [
+        'patient' => [
             'driver' => 'session',
-            'provider' => 'pacientes',
+            'provider' => 'patients',
         ],
 
-        'medico' => [
+        'doctor' => [
             'driver' => 'session',
-            'provider' => 'medicos',
+            'provider' => 'doctors',
         ],
 
     ],
@@ -76,14 +76,14 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        'pacientes' => [
+        'patients' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Paciente::class,
+            'model' => App\Models\Patient::class,
         ],
 
-        'medicos' => [
+        'doctors' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Medico::class,
+            'model' => App\Models\Doctor::class,
         ],
 
         // 'users' => [

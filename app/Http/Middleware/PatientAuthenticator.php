@@ -5,8 +5,9 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
 
-class MedicoAuthenticator
+class PatientAuthenticator
 {
     /**
      * Handle an incoming request.
@@ -15,7 +16,7 @@ class MedicoAuthenticator
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::guard('medico')->check() ){
+        if(Auth::guard('patient')->check()) {
             return $next($request);
         }
         

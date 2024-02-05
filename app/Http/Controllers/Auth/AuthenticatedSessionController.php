@@ -37,13 +37,12 @@ class AuthenticatedSessionController extends Controller
         //dd($credentials);
 
         if(Auth::attempt($credentials)){
-            dd("administrador");
             return redirect()->route('dashbord');
-        } else if(Auth::guard('paciente')->attempt($credentials)){
-            return redirect()->route('paciente.dashboard');
+        } else if(Auth::guard('patient')->attempt($credentials)){
+            return redirect()->route('patient.dashboard');
         }
-        else if(Auth::guard('medico')->attempt($credentials)){
-            return redirect()->route('medico.dashboard');
+        else if(Auth::guard('doctor')->attempt($credentials)){
+            return redirect()->route('doctor.dashboard');
         }
     }
 

@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Medico extends Authenticatable
+class Patient extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -21,6 +21,11 @@ class Medico extends Authenticatable
         'name',
         'email',
         'password',
+        'wasbornat',
+        'adress',
+        'tell',
+        'cpf',
+        'typeofblood',
     ];
 
     /**

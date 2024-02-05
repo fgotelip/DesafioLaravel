@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class PacienteAuthenticator
+class DoctorAuthenticator
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class PacienteAuthenticator
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::guard('paciente')->check()) {
+        if(Auth::guard('doctor')->check()) {
             return $next($request);
         }
         
