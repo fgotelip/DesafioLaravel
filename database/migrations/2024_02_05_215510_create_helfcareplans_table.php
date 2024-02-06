@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('helfcareplans', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('description');
+            $table->decimal('discount', 5, 2);
             $table->timestamps();
         });
     }

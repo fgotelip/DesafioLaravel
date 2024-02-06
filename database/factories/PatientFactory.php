@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Patient;
+use App\Models\Helfcareplan;
 use Illuminate\Support\Str;
 
 /**
@@ -38,6 +39,8 @@ class PatientFactory extends Factory
                 'B+',
                 'B-',
             ]),
+            'pic' => null,
+           // 'hcp_id' => HealthcarePlan::inRandomOrder()->first()->id,
         ];
     }
 

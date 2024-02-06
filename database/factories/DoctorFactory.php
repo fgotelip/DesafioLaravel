@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Doctor;
+use App\Models\Specilty;
 use Illuminate\Support\Str;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Doctor>
@@ -33,6 +34,8 @@ class DoctorFactory extends Factory
                 'integral',
             ]),
             'crm' => fake()->unique()->numerify('######'),
+            'pic' => fake()->imageUrl($width = 640, $height = 480),
+           // 'hcp_id' => Specialty::inRandomOrder()->first()->id,
         ];
     }
 

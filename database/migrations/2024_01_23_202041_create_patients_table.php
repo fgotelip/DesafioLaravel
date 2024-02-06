@@ -22,12 +22,9 @@ return new class extends Migration
             $table->string('tell')->nullable();
             $table->string('cpf')->nullable();
             $table->string('typeofblood')->nullable();
-            #$table->longblob('pic')->nullable();
-            /*
-            $table->integer('hcpname')-unsigned();
-            $table->foreign('hcpname')->references('id')->on('')->onDelete('cascade')->onUpdate('cascade');
-             - falta criar a tabela
-            */
+            $table->binary('pic')->nullable();
+            //$table->unsignedBigInteger('hcp_id')->nullable(); 
+            //$table->foreign('hcp_id')->references('id')->on('healthcareplans')->onDelete('cascade')->onUpdate('cascade'); 
             $table->rememberToken();
             $table->timestamps();
         });
