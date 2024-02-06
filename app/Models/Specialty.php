@@ -14,4 +14,10 @@ class Specialty extends Model
         'description',
         'value',
     ];
+
+    public function doctors(): HasMany
+    {
+        return $this->hasMany(Doctor::class);
+    }
+    
 }

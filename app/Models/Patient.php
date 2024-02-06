@@ -47,4 +47,9 @@ class Patient extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function helfacareplan(): BelongsTo
+    {
+        return $this->belongsTo(Helfcareplan::class);
+    }
 }

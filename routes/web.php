@@ -39,19 +39,46 @@ Route::middleware(['doctor'])->group(function () {
     })->name('doctor.dashboard');
 });
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
+Route::middleware(['doctor','patient'])->group(function () {
     Route::get('/pacientes', [PatientController::class, 'index'])->name('patient.index');
-  //Route::get('/pacientes/create', [PatientController::class, 'create'])->name('patient.create');
+    Route::get('/pacientes/create', [PatientController::class, 'create'])->name('patient.create');
     Route::get('/pacientes/{patient}/edit', [PatientController::class, 'edit'])->name('patient.edit');
     Route::get('/pacientes/{patient}', [PatientController::class, 'show'])->name('patient.show');
     Route::post('/pacientes', [PatientController::class, 'store'])->name('patient.store');
     Route::put('/pacientes/{patient}', [PatientController::class, 'update'])->name('patient.update');
     Route::delete('/pacientes/{patient}', [PatientController::class, 'destroy'])->name('patient.destroy');
-    
+
+    Route::get('/medicos', [DoctorController::class, 'index'])->name('doctor.index');
+    Route::get('/medicos/create', [DoctorController::class, 'create'])->name('doctor.create');
+    Route::get('/medicos/{doctor}/edit', [DoctortController::class, 'edit'])->name('doctor.edit');
+    Route::get('/medicos/{doctor}', [DoctorController::class, 'show'])->name('doctor.show');
+    Route::post('/medicos', [DoctorController::class, 'store'])->name('doctor.store');
+    Route::put('/medicos/{doctor}', [DoctorController::class, 'update'])->name('doctor.update');
+    Route::delete('/medicos/{doctor}', [DoctorController::class, 'destroy'])->name('doctor.destroy');
+
+    Route::get('/especialidades', [SpecialtyController::class, 'index'])->name('specialty.index');
+    Route::get('/especialidades/create', [SpecialtyController::class, 'create'])->name('specialty.create');
+    Route::get('/especialidades/{specialty}/edit', [specialtytController::class, 'edit'])->name('specialty.edit');
+    Route::get('/especialidades/{specialty}', [SpecialtyController::class, 'show'])->name('specialty.show');
+    Route::post('/especialidades', [SpecialtyController::class, 'store'])->name('specialty.store');
+    Route::put('/especialidades/{specialty}', [SpecialtyController::class, 'update'])->name('specialty.update');
+    Route::delete('/especialidades/{specialty}', [SpecialtyController::class, 'destroy'])->name('specialty.destroy');
+
+    Route::get('/planosdesaude', [HelfcareplanController::class, 'index'])->name('helfcareplan.index');
+    Route::get('/planosdesaude/create', [HelfcareplanController::class, 'create'])->name('helfcareplan.create');
+    Route::get('/planosdesaude/{helfcareplan}/edit', [specialtytController::class, 'edit'])->name('helfcareplan.edit');
+    Route::get('/planosdesaude/{helfcareplan}', [HelfcareplanController::class, 'show'])->name('helfcareplan.show');
+    Route::post('/planosdesaude', [HelfcareplanController::class, 'store'])->name('helfcareplan.store');
+    Route::put('/planosdesaude/{helfcareplan}', [HelfcareplanController::class, 'update'])->name('helfcareplan.update');
+    Route::delete('/planosdesaude/{helfcareplan}', [HelfcareplanController::class, 'destroy'])->name('helfcareplan.destroy');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__.'/auth.php';
+
+

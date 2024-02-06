@@ -14,4 +14,11 @@ class Helfcareplan extends Model
         'description',
         'discount',
     ];
+
+    public function patients(): HasMany
+    {
+        return $this->hasMany(Patient::class);
+    }
+
+    
 }
