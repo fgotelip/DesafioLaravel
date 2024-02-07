@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Patient;
 use App\Http\Controllers\Controller;
+use App\Models\Helfcareplan;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -23,7 +24,9 @@ class PatientController extends Controller
      */
     public function create()
     {
-
+        $helfcareplans = Helfcareplan::all();
+        $patient = new Patient();
+        return view('admin.patients.create' , compact('patient','helfcareplans'));
     }
 
     /**
@@ -31,7 +34,10 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        Patient::create($data);
+
+        return redirect()->route('patients.index')->with('sucess', true);
     }
 
     /**
@@ -47,7 +53,8 @@ class PatientController extends Controller
      */
     public function edit(Patient $patient)
     {
-        return view('admin.patients.edit', compact('patient'));
+        $helfcareplans = Helfcareplan::all();
+        return view('admin.patients.edit', compact('patient','helfcareplans'));
     }
 
     /**

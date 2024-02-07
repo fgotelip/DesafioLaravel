@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Patient;
+use App\Models\Doctor;
 use App\Models\Helfcareplan;
 use Illuminate\Support\Str;
 
@@ -23,7 +23,7 @@ class PatientFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => fake()->password(),
             'remember_token' => Str::random(10),
             'wasbornat' => fake()->date($format = 'Y-m-d', $max = 'now'),
             'address' => fake()->address(),
@@ -40,7 +40,7 @@ class PatientFactory extends Factory
                 'B-',
             ]),
             'pic' => null,
-           // 'hcp_id' => HealthcarePlan::inRandomOrder()->first()->id,
+            'helfcareplan_id' => Helfcareplan::inRandomOrder()->first()->id,
         ];
     }
 

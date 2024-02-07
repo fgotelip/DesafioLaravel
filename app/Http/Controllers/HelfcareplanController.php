@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Helfcareplan;
 use App\Http\Controllers\Controller;
+use App\Models\Helfcareplan;
 use Illuminate\Http\Request;
 
 class HelfcareplanController extends Controller
@@ -13,7 +13,9 @@ class HelfcareplanController extends Controller
      */
     public function index()
     {
-        //
+        $helfcareplans = Helfcareplan::all();
+
+        return view('admin.helfcareplans.index', compact('helfcareplans'));
     }
 
     /**
@@ -21,7 +23,8 @@ class HelfcareplanController extends Controller
      */
     public function create()
     {
-        //
+        $helfcareplan = new Helfcareplan();
+        return view('admin.helfcareplans.create' , compact('helfcareplan'));
     }
 
     /**
@@ -29,7 +32,10 @@ class HelfcareplanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        Helfcareplan::create($data);
+
+        return redirect()->route('helfcareplans.index')->with('sucess', true);
     }
 
     /**
@@ -37,7 +43,7 @@ class HelfcareplanController extends Controller
      */
     public function show(Helfcareplan $helfcareplan)
     {
-        //
+        return view('admin.helfcareplans.show', compact('helfcareplan'));
     }
 
     /**
@@ -45,7 +51,7 @@ class HelfcareplanController extends Controller
      */
     public function edit(Helfcareplan $helfcareplan)
     {
-        //
+        return view('admin.helfcareplans.show', compact('helfcareplan'));
     }
 
     /**
@@ -53,7 +59,10 @@ class HelfcareplanController extends Controller
      */
     public function update(Request $request, Helfcareplan $helfcareplan)
     {
-        //
+        $data = $request->all();
+        $helfcareplan->update($data);
+
+        return redirect()->route('helfcareplans.index')->with('sucess', true);
     }
 
     /**
@@ -61,6 +70,6 @@ class HelfcareplanController extends Controller
      */
     public function destroy(Helfcareplan $helfcareplan)
     {
-        //
+        $helfcareplan->delete();
     }
 }

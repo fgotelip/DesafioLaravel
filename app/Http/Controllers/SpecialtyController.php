@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Specialty;
 use App\Http\Controllers\Controller;
+use App\Models\Specialty;
 use Illuminate\Http\Request;
 
 class SpecialtyController extends Controller
@@ -13,7 +13,9 @@ class SpecialtyController extends Controller
      */
     public function index()
     {
-        //
+        $specialties = Specialty::all();
+
+        return view('admin.specialties.index', compact('specialties'));
     }
 
     /**
@@ -21,7 +23,8 @@ class SpecialtyController extends Controller
      */
     public function create()
     {
-        //
+        $specialty = new Specialty();
+        return view('admin.specialties.create' , compact('specialty'));
     }
 
     /**
@@ -29,7 +32,10 @@ class SpecialtyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        Specialty::create($data);
+
+        return redirect()->route('specialties.index')->with('sucess', true);
     }
 
     /**
@@ -37,7 +43,7 @@ class SpecialtyController extends Controller
      */
     public function show(Specialty $specialty)
     {
-        //
+        return view('admin.specialties.show', compact('specialty'));
     }
 
     /**
@@ -45,7 +51,7 @@ class SpecialtyController extends Controller
      */
     public function edit(Specialty $specialty)
     {
-        //
+        return view('admin.specialties.show', compact('specialty'));
     }
 
     /**
@@ -53,7 +59,10 @@ class SpecialtyController extends Controller
      */
     public function update(Request $request, Specialty $specialty)
     {
-        //
+        $data = $request->all();
+        $specialty->update($data);
+
+        return redirect()->route('specialties.index')->with('sucess', true);
     }
 
     /**
@@ -61,6 +70,6 @@ class SpecialtyController extends Controller
      */
     public function destroy(Specialty $specialty)
     {
-        //
+        $specialty->delete();
     }
 }
