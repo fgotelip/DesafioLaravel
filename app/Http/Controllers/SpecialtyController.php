@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreSpecialtyRequest;
+use App\Http\Requests\UpdateSpecialtyRequest;
 use App\Models\Specialty;
 use Illuminate\Http\Request;
 
@@ -30,9 +32,9 @@ class SpecialtyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreSpecialtyRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         Specialty::create($data);
 
         return redirect()->route('specialties.index')->with('sucess', true);
@@ -57,9 +59,9 @@ class SpecialtyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Specialty $specialty)
+    public function update(UpdateSpecialtyRequest $request, Specialty $specialty)
     {
-        $data = $request->all();
+        $data = $request->validate();
         $specialty->update($data);
 
         return redirect()->route('specialties.index')->with('sucess', true);

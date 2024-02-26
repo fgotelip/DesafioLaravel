@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Patient;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePatientRequest;
+use App\Http\Requests\UpdatePatientRequest;
 use App\Models\Helfcareplan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PatientController extends Controller
 {
@@ -32,10 +35,12 @@ class PatientController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePatientRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         Patient::create($data);
+
+        $data['password'] = Hash::make($data['password']);
 
         return redirect()->route('patients.index')->with('sucess', true);
     }
@@ -60,10 +65,12 @@ class PatientController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Patient $patient)
+    public function update(UpdatePatientRequest $request, Patient $patient)
     {
-        $data = $request->all();
+        $data = $request->validate();
         $patient->update($data);
+
+        $data['password'] = Hash::make($data['password']);
 
         return redirect()->route('patients.index')->with('sucess', true);
     }

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreHelfcareplanRequest;
+use App\Http\Requests\UpdateHelfcareplanRequest;
 use App\Models\Helfcareplan;
 use Illuminate\Http\Request;
+
 
 class HelfcareplanController extends Controller
 {
@@ -30,9 +33,9 @@ class HelfcareplanController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreHelfcareplanRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         Helfcareplan::create($data);
 
         return redirect()->route('helfcareplans.index')->with('sucess', true);
@@ -57,9 +60,9 @@ class HelfcareplanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Helfcareplan $helfcareplan)
+    public function update(UpdateHelfcareplanRequest $request, Helfcareplan $helfcareplan)
     {
-        $data = $request->all();
+        $data = $request->validate();
         $helfcareplan->update($data);
 
         return redirect()->route('helfcareplans.index')->with('sucess', true);

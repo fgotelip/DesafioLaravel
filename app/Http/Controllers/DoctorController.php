@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctor;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreDoctorRequest;
+use App\Http\Requests\UpdateDoctorRequest;
+
 use App\Models\Specialty;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class DoctorController extends Controller
 {
@@ -32,10 +36,12 @@ class DoctorController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreDoctorRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         Doctor::create($data);
+
+        $data['password'] = Hash::make($data['password']);
 
         return redirect()->route('doctors.index')->with('sucess', true);
     }
@@ -60,10 +66,12 @@ class DoctorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Doctor $doctor)
+    public function update(UpdateDoctorRequest $request, Doctor $doctor)
     {
-        $data = $request->all();
+        $data = $request->validate();
         $doctor->update($data);
+
+        $data['password'] = Hash::make($data['password']);
 
         return redirect()->route('doctors.index')->with('sucess', true);
     }
