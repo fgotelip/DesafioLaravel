@@ -23,8 +23,6 @@ return new class extends Migration
             $table->string('cpf')->nullable();
             $table->string('typeofblood')->nullable();
             $table->binary('pic')->nullable();
-            //$table->unsignedBigInteger('hcp_id')->nullable(); 
-            //$table->foreign('hcp_id')->references('id')->on('healthcareplans')->onDelete('cascade')->onUpdate('cascade'); 
             $table->rememberToken();
             $table->timestamps();
         });

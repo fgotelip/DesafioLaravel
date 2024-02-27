@@ -22,8 +22,6 @@ return new class extends Migration
             $table->string('tell');
             $table->string('cpf');
             $table->string('workhours');
-           // $table->unsignedBigInteger('specialty_id');
-           // $table->foreign('specialty_id')->references('id')->on('specialties')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('crm');
             $table->binary('pic')->nullable();
             $table->rememberToken();
