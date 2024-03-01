@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Patient;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePatientRequest;
 use App\Http\Requests\UpdatePatientRequest;
 use App\Models\Helfcareplan;
@@ -17,7 +16,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-        $patients = Patient::all();
+        $patients = Patient::paginate(4);
 
         return view('admin.patients.index', compact('patients'));
     }
@@ -42,7 +41,7 @@ class PatientController extends Controller
 
         $data['password'] = Hash::make($data['password']);
 
-        return redirect()->route('patients.index')->with('sucess', true);
+        return redirect()->route('patient.index')->with('success', true);
     }
 
     /**
@@ -50,7 +49,8 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        return view('admin.patients.show', compact('patient'));
+        $helfcareplans = Helfcareplan::all();
+        return view('admin.patients.show', compact('patient','helfcareplans'));
     }
 
     /**
@@ -67,12 +67,12 @@ class PatientController extends Controller
      */
     public function update(UpdatePatientRequest $request, Patient $patient)
     {
-        $data = $request->validate();
+        $data = $request->validated();
         $patient->update($data);
 
         $data['password'] = Hash::make($data['password']);
 
-        return redirect()->route('patients.index')->with('sucess', true);
+        return redirect()->route('patient.index')->with('success', true);
     }
 
     /**
@@ -82,6 +82,6 @@ class PatientController extends Controller
     {
         $patient->delete();
         
-        return redirect()->route('patients.index')->with('sucess', true);
+        return redirect()->route('patient.index')->with('success', true);
     }
 }

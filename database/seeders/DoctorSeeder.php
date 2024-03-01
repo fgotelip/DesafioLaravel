@@ -13,6 +13,6 @@ class DoctorSeeder extends Seeder
      */
     public function run(): void
     {
-        Doctor::factory()->count(6)->create();
+        Doctor::factory()->count(10)->create();
     }
 }

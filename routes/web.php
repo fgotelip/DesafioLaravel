@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 //-SEED
 //Hash::make('suaSenha');
 
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -66,6 +68,23 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::get('/pacientes', [PatientController::class, 'index'])->name('patient.index');
+    Route::get('/pacientes/create', [PatientController::class, 'create'])->name('patient.create');
+    Route::get('/pacientes/{patient}/edit', [PatientController::class, 'edit'])->name('patient.edit');
+    Route::get('/pacientes/{patient}', [PatientController::class, 'show'])->name('patient.show');
+    Route::post('/pacientes', [PatientController::class, 'store'])->name('patient.store');
+    Route::put('/pacientes/{patient}', [PatientController::class, 'update'])->name('patient.update');
+    Route::delete('/pacientes/{patient}', [PatientController::class, 'destroy'])->name('patient.destroy');
+
+    Route::get('/medicos', [DoctorController::class, 'index'])->name('doctor.index');
+    Route::get('/medicos/create', [DoctorController::class, 'create'])->name('doctor.create');
+    Route::get('/medicos/{doctor}/edit', [DoctorController::class, 'edit'])->name('doctor.edit');
+    Route::get('/medicos/{doctor}', [DoctorController::class, 'show'])->name('doctor.show');
+    Route::post('/medicos', [DoctorController::class, 'store'])->name('doctor.store');
+    Route::put('/medicos/{doctor}', [DoctorController::class, 'update'])->name('doctor.update');
+    Route::delete('/medicos/{doctor}', [DoctorController::class, 'destroy'])->name('doctor.destroy');
+
+
     Route::get('/especialidades', [SpecialtyController::class, 'index'])->name('specialty.index');
     Route::get('/especialidades/create', [SpecialtyController::class, 'create'])->name('specialty.create');
     Route::get('/especialidades/{specialty}/edit', [SpecialtyController::class, 'edit'])->name('specialty.edit');
@@ -86,7 +105,3 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -11,7 +11,7 @@ class StorePatientRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,16 @@ class StorePatientRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|min:2|max:254',
+            'email' => 'required',
+            'password' => 'required',
+            'wasbornat' => 'required',
+            'address' => 'required',
+            'tell' => 'required',
+            'cpf' => 'required',
+            'typeofblood' => 'required',
+            'pic' => 'required',
+            'helfcareplan_id' => 'required|exists:helfcareplans,id|integer',
         ];
     }
 

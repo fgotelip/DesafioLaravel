@@ -1,19 +1,18 @@
 @extends('layouts.master')
 
 @section('title')
-    Atualizar
+    Cadastrar
 @endsection
 
 @section('title2')
-    Atualizar
+    Cadastrar
 @endsection
 
 @section('content')
-    <form name="formEdit" id="formEdit" method="post" action="{{url("pacientes/$patient->id")}}">
-        @method('PUT')
+    <form name="formCad" id="formCad" method="post" action="{{url('/pacientes')}}">
         @csrf
         @include('admin.patients.form', ['botao' => '<input class="btn btn-primary"
-         type="submit" value="Editar">','botao2' => '<a class="btn btn-secondary" 
+         type="submit" value="Cadastrar">','botao2' => '<a class="btn btn-secondary" 
          href="/pacientes">Voltar</a>'])
     </form>
 @endsection
