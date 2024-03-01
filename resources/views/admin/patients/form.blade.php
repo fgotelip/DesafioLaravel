@@ -58,18 +58,18 @@
     <div class="form-group col-sm-12 col-md-4">
         <label for="pic" class="required">Foto</label>
         <input type="file" name="pic" id="pic" autofocus class="form-control"
-         required value="{{ old('pic', $patient->pic) }}" @if (isset($view)) {!! $view !!}
+         required @if (isset($view)) {!! $view !!}
         @endif>
+        <img src="{{asset('storage/paciente/' . $patient->pic)}}">
     </div>
 
     <div class="form-group col-sm-12 col-md-4 ml-15 mt-3">
         <label for="helfcareplan_id">Plano de Saúde</label>
         <select class="form-group" name="helfcareplan_id" id="helfcareplan_id" 
-        value="{{old('helfcareplan_id', $patient->helfcareplan->id ?? null)}}" 
         @if (isset($view)) {!! $view !!} @endif>
             <option value="">Selecione</option>
             @foreach($helfcareplans as $helfcareplan)
-                <option value="{{$helfcareplan->id}}">{{$helfcareplan->name}}</option>
+                <option {{$patient->id == $helfcareplan->id ? "selected": ''}} value="{{$helfcareplan->id}}">{{$helfcareplan->name}}</option>
             @endforeach
 
         </select>
@@ -86,20 +86,3 @@
 
 
 </div>
-
-@push('js')
-    <script>
-        function selectOption(id){
-            const slect = document.querySelector('#'+id);
-            const children = select.children;
-            for (let child of children) {
-                if(child.value === select.getAttribute("value")){
-                    child.setAttribute('selected', true);
-                }
-            }
-            window.onload = () => {
-                selectOption("helfcareplan_id");
-            };
-        }
-    </script>    
-@endpush

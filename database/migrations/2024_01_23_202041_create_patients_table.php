@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('tell')->nullable();
             $table->string('cpf')->nullable();
             $table->string('typeofblood')->nullable();
-            $table->binary('pic')->nullable();
+            $table->string('pic')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

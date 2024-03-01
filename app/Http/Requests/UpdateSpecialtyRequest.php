@@ -22,7 +22,10 @@ class UpdateSpecialtyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'id' => 'required',
+            'name' => 'required',
+            'description' => 'required',
+            'value' => 'required',
         ];
     }
 }

@@ -15,7 +15,7 @@ class SpecialtyController extends Controller
      */
     public function index()
     {
-        $specialties = Specialty::all();
+        $specialties = Specialty::paginate(4);
 
         return view('admin.specialties.index', compact('specialties'));
     }
@@ -73,5 +73,7 @@ class SpecialtyController extends Controller
     public function destroy(Specialty $specialty)
     {
         $specialty->delete();
+
+        return redirect()->route('specialty.index')->with('success',true);
     }
 }

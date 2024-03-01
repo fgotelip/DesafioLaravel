@@ -34,7 +34,7 @@ class DoctorFactory extends Factory
                 'integral',
             ]),
             'crm' => fake()->unique()->numerify('######'),
-            'pic' => fake()->imageUrl($width = 640, $height = 480),
+            'pic' => fake()->text(),
             'specialty_id' => Specialty::inRandomOrder()->first()->id,
         ];
     }

@@ -18,7 +18,7 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $doctors = Doctor::all();
+        $doctors = Doctor::paginate(4);
 
         return view('admin.doctors.index', compact('doctors'));
     }
@@ -39,11 +39,18 @@ class DoctorController extends Controller
     public function store(StoreDoctorRequest $request)
     {
         $data = $request->validated();
+        
+        $data['pic'];
+        $file = $request->file('pic');
+        $nameimg = $file->getClientOriginalName();
+        $file->storeAs('public/medicos', $nameimg);
+        $data['pic']=$nameimg;
+
         Doctor::create($data);
 
         $data['password'] = Hash::make($data['password']);
 
-        return redirect()->route('doctors.index')->with('sucess', true);
+        return redirect()->route('doctor.index')->with('sucess', true);
     }
 
     /**
@@ -51,7 +58,8 @@ class DoctorController extends Controller
      */
     public function show(Doctor $doctor)
     {
-        return view('admin.doctors.show', compact('doctor'));
+        $specialties = Specialty::all();
+        return view('admin.doctors.show', compact('doctor','specialties'));
     }
 
     /**
@@ -60,7 +68,7 @@ class DoctorController extends Controller
     public function edit(Doctor $doctor)
     {
         $specialties = Specialty::all();
-        return view('admin.doctors.show', compact('doctor','specialties'));
+        return view('admin.doctors.edit', compact('doctor','specialties'));
     }
 
     /**
@@ -68,12 +76,17 @@ class DoctorController extends Controller
      */
     public function update(UpdateDoctorRequest $request, Doctor $doctor)
     {
-        $data = $request->validate();
+        $data = $request->validated();
+            $data['pic'];
+            $file = $request->file('pic');
+            $nameimg = $file->getClientOriginalName();
+            $file->storeAs('public/medicos', $nameimg);
+            $data['pic']=$nameimg;
         $doctor->update($data);
 
         $data['password'] = Hash::make($data['password']);
 
-        return redirect()->route('doctors.index')->with('sucess', true);
+        return redirect()->route('doctor.index')->with('sucess', true);
     }
 
     /**
@@ -82,5 +95,7 @@ class DoctorController extends Controller
     public function destroy(Doctor $doctor)
     {
         $doctor->delete();
+
+        return redirect()->route('doctor.index')->with('success',true);
     }
 }

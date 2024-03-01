@@ -36,7 +36,15 @@ class PatientController extends Controller
      */
     public function store(StorePatientRequest $request)
     {
+        
         $data = $request->validated();
+        if($data['pic']){
+            $file = $request->file('pic');
+            $nameimg = $file->getClientOriginalName();
+            $file->storeAs('public/paciente', $nameimg);
+            $data['pic']=$nameimg;
+        };
+       
         Patient::create($data);
 
         $data['password'] = Hash::make($data['password']);
@@ -68,6 +76,12 @@ class PatientController extends Controller
     public function update(UpdatePatientRequest $request, Patient $patient)
     {
         $data = $request->validated();
+        if($data['pic']){
+            $file = $request->file('pic');
+            $nameimg = $file->getClientOriginalName();
+            $file->storeAs('public/paciente', $nameimg);
+            $data['pic']=$nameimg;
+        };
         $patient->update($data);
 
         $data['password'] = Hash::make($data['password']);

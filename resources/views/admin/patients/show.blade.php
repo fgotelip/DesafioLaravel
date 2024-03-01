@@ -9,5 +9,6 @@
 @endsection
 
 @section('content')
-        @include('admin.patients.form', ['view' => 'readonly' ,'botao' => '<a class="btn btn-secondary" href="/pacientes">Voltar</a>'])
+        @include('admin.patients.form', ['view' => 'readonly' ,'botao' =>
+         '<a class="btn btn-secondary" href="/pacientes">Voltar</a>'])
 @endsection

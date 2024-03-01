@@ -9,7 +9,8 @@
 @endsection
 
 @section('content')
-    <form name="formCad" id="formCad" method="post" action="{{url('/pacientes')}}">
+    <form name="formCad" id="formCad" method="post" action="{{url('/pacientes')}}"
+     enctype="multipart/form-data">
         @csrf
         @include('admin.patients.form', ['botao' => '<input class="btn btn-primary"
          type="submit" value="Cadastrar">','botao2' => '<a class="btn btn-secondary" 

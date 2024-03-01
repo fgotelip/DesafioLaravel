@@ -39,7 +39,7 @@ class PatientFactory extends Factory
                 'B+',
                 'B-',
             ]),
-            'pic' => null,
+            'pic' => fake()->text(),
             'helfcareplan_id' => Helfcareplan::inRandomOrder()->first()->id,
         ];
     }
