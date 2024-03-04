@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @section('title')
-    Atualizar
+    Atualizar Dados
 @endsection
 
 @section('title2')
-    Atualizar
+    Atualizar Dados
 @endsection
 
 @section('content')

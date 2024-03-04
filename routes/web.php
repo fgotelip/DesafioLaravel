@@ -95,7 +95,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/planosdesaude', [HelfcareplanController::class, 'index'])->name('helfcareplan.index');
     Route::get('/planosdesaude/create', [HelfcareplanController::class, 'create'])->name('helfcareplan.create');
-    Route::get('/planosdesaude/{helfcareplan}/edit', [SpecialtyController::class, 'edit'])->name('helfcareplan.edit');
+    Route::get('/planosdesaude/{helfcareplan}/edit', [HelfcareplanController::class, 'edit'])->name('helfcareplan.edit');
     Route::get('/planosdesaude/{helfcareplan}', [HelfcareplanController::class, 'show'])->name('helfcareplan.show');
     Route::post('/planosdesaude', [HelfcareplanController::class, 'store'])->name('helfcareplan.store');
     Route::put('/planosdesaude/{helfcareplan}', [HelfcareplanController::class, 'update'])->name('helfcareplan.update');

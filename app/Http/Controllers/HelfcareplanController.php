@@ -16,7 +16,7 @@ class HelfcareplanController extends Controller
      */
     public function index()
     {
-        $helfcareplans = Helfcareplan::all();
+        $helfcareplans = Helfcareplan::paginate(4);
 
         return view('admin.helfcareplans.index', compact('helfcareplans'));
     }
@@ -38,7 +38,7 @@ class HelfcareplanController extends Controller
         $data = $request->validated();
         Helfcareplan::create($data);
 
-        return redirect()->route('helfcareplans.index')->with('sucess', true);
+        return redirect()->route('helfcareplan.index')->with('success', true);
     }
 
     /**
@@ -54,7 +54,7 @@ class HelfcareplanController extends Controller
      */
     public function edit(Helfcareplan $helfcareplan)
     {
-        return view('admin.helfcareplans.show', compact('helfcareplan'));
+        return view('admin.helfcareplans.edit', compact('helfcareplan'));
     }
 
     /**
@@ -62,10 +62,10 @@ class HelfcareplanController extends Controller
      */
     public function update(UpdateHelfcareplanRequest $request, Helfcareplan $helfcareplan)
     {
-        $data = $request->validate();
+        $data = $request->validated();
         $helfcareplan->update($data);
 
-        return redirect()->route('helfcareplans.index')->with('sucess', true);
+        return redirect()->route('helfcareplan.index')->with('success', true);
     }
 
     /**
@@ -74,5 +74,7 @@ class HelfcareplanController extends Controller
     public function destroy(Helfcareplan $helfcareplan)
     {
         $helfcareplan->delete();
+
+        return redirect()->route('helfcareplan.index')->with('success',true);
     }
 }

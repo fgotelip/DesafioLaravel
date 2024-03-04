@@ -22,17 +22,18 @@ class StoreHelfcareplanRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => 'required',
-            'name' => 'required',
-            'description' => 'required',
-            'discount' => 'required',
+            'name' => 'required|min:2|max:100',
+            'description' => 'required|min:10|max:100',
+            'discount' => 'required|numeric',
         ];
     }
 
     public function attributes()
     {
         return [
-
+            'name' => 'nome',
+            'description' => 'desscrição',
+            'discount' => 'desconto',
         ];
     }
 }

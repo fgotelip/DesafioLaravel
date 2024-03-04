@@ -22,15 +22,15 @@ class StorePatientRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|min:2|max:254',
-            'email' => 'required',
-            'password' => 'required',
-            'wasbornat' => 'required',
-            'address' => 'required',
-            'tell' => 'required',
-            'cpf' => 'required',
-            'typeofblood' => 'required',
-            'pic' => 'required',
+            'name' => 'required|string|min:2|max:100',
+            'email' => 'required|email|max:100|unique:doctors,email',
+            'password' => 'required|string|min:6|max:30',
+            'wasbornat' => 'required|date',
+            'address' => 'required|string|min:10|max:100',
+            'tell' => 'required|string|min:9|max:30',
+            'cpf' => 'required|string|size:15',
+            'typeofblood' => 'required|string|min:2|max:3',
+            'pic' => 'required|file',
             'helfcareplan_id' => 'required|exists:helfcareplans,id|integer',
         ];
     }
@@ -38,7 +38,14 @@ class StorePatientRequest extends FormRequest
     public function attributes()
     {
         return [
-
+            'name' => 'nome',
+            'password' => 'senha',
+            'wasbornat' => 'data de nascimento',
+            'address' => 'endereço',
+            'tell' => 'telefone',
+            'typeofblood' => 'tipo sanguíneo',
+            'pic' => 'foto',
+            'helfcareplan_id' => 'id do plano de saúde'
         ];
     }
 }

@@ -22,17 +22,18 @@ class StoreSpecialtyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => 'required',
-            'name' => 'required',
-            'description' => 'required',
-            'value' => 'required',
+            'name' => 'required|min:2|max:100',
+            'description' => 'required|min:10|max:100',
+            'value' => 'required|numeric',
         ];
     }
 
     public function attributes()
     {
         return [
-
+            'name' => 'nome',
+            'description' => 'desscrição',
+            'value' => 'preço',
         ];
     }
 }

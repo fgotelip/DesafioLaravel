@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('cpf');
             $table->string('workhours');
             $table->integer('crm');
-            $table->string('pic')->nullable();
+            $table->string('pic');
             $table->rememberToken();
             $table->timestamps();
         });

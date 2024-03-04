@@ -1,3 +1,14 @@
+@if($errors->any())
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>
+            {!! implode('<br/>', $errors->all('<span>:message</span>')) !!}
+        </strong>
+    </div>
+@endif
+
+
+
 <div class="text-center row">
     <div class="form-group col-sm-12 col-md-4">
         <label for="name" class="required">Nome</label>
@@ -71,7 +82,7 @@
         <label for="pic" class="required">Foto</label>
         <input type="file" name="pic" id="pic" autofocus class="form-control"
          required @if (isset($view)) {!! $view !!} @endif>
-         <img src="{{asset('storage/paciente/' . $patient->pic)}}">
+         <img class="w-1/5 rounded-circle"src="{{asset('storage/medicos/' . $doctor->pic)}}">
     </div>
 
     

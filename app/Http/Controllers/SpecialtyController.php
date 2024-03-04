@@ -37,7 +37,7 @@ class SpecialtyController extends Controller
         $data = $request->validated();
         Specialty::create($data);
 
-        return redirect()->route('specialties.index')->with('sucess', true);
+        return redirect()->route('specialty.index')->with('success', true);
     }
 
     /**
@@ -53,7 +53,7 @@ class SpecialtyController extends Controller
      */
     public function edit(Specialty $specialty)
     {
-        return view('admin.specialties.show', compact('specialty'));
+        return view('admin.specialties.edit', compact('specialty'));
     }
 
     /**
@@ -61,10 +61,10 @@ class SpecialtyController extends Controller
      */
     public function update(UpdateSpecialtyRequest $request, Specialty $specialty)
     {
-        $data = $request->validate();
+        $data = $request->validated();
         $specialty->update($data);
 
-        return redirect()->route('specialties.index')->with('sucess', true);
+        return redirect()->route('specialty.index')->with('success', true);
     }
 
     /**

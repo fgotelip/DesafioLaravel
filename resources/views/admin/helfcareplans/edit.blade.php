@@ -9,12 +9,12 @@
 @endsection
 
 @section('content')
-    <form name="formEdit" id="formEdit" method="post" action="{{url("pacientes/$patient->id")}}"
-    enctype="multipart/form-data">
+    <form name="formEdit" id="formEdit" method="post" 
+    action="{{url("planosdesaude/$helfcareplan->id")}}">
         @method('PUT')
         @csrf
-        @include('admin.patients.form', ['botao' => '<input class="btn btn-primary"
+        @include('admin.helfcareplans.form', ['botao' => '<input class="btn btn-primary"
          type="submit" value="Editar">','botao2' => '<a class="btn btn-secondary" 
-         href="/pacientes">Voltar</a>'])
+         href="/planosdesaude">Voltar</a>'])
     </form>
 @endsection

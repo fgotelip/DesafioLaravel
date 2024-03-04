@@ -1,3 +1,13 @@
+@if($errors->any())
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>
+            {!! implode('<br/>', $errors->all('<span>:message</span>')) !!}
+        </strong>
+    </div>
+@endif
+
+
 <div class="text-center row">
     <div class="form-group col-sm-12 col-md-4">
         <label for="name" class="required">Nome</label>
@@ -58,9 +68,9 @@
     <div class="form-group col-sm-12 col-md-4">
         <label for="pic" class="required">Foto</label>
         <input type="file" name="pic" id="pic" autofocus class="form-control"
-         required @if (isset($view)) {!! $view !!}
+         required  value="{{asset('storage/paciente/' . $patient->pic)}}" @if (isset($view)) {!! $view !!}
         @endif>
-        <img src="{{asset('storage/paciente/' . $patient->pic)}}">
+        <img class="w-1/5 rounded-circle" src="{{asset('storage/paciente/' . $patient->pic)}}">
     </div>
 
     <div class="form-group col-sm-12 col-md-4 ml-15 mt-3">
@@ -69,7 +79,8 @@
         @if (isset($view)) {!! $view !!} @endif>
             <option value="">Selecione</option>
             @foreach($helfcareplans as $helfcareplan)
-                <option {{$patient->id == $helfcareplan->id ? "selected": ''}} value="{{$helfcareplan->id}}">{{$helfcareplan->name}}</option>
+                <option {{$patient->id == $helfcareplan->id ? "selected": ''}} 
+                    value="{{$helfcareplan->id}}">{{$helfcareplan->name}}</option>
             @endforeach
 
         </select>

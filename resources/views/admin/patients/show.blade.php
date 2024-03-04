@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @section('title')
-    Visualizar
+    Informações
 @endsection
 
 @section('title2')
-    Visualizar
+    Informações
 @endsection
 
 @section('content')
