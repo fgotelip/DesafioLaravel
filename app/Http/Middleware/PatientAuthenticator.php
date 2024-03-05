@@ -20,6 +20,6 @@ class PatientAuthenticator
             return $next($request);
         }
         
-        return redirect('/completar_cadastro');
+        return redirect('/login');
     }
 }

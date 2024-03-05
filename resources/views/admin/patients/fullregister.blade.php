@@ -1,19 +1,20 @@
 @extends('layouts.master')
 
 @section('title')
-    Cadastrar
+    Completar Cadastro
 @endsection
 
 @section('title2')
-    Cadastrar
+    Completar Cadastro
 @endsection
 
 @section('content')
-    <form name="formCad" id="formCad" method="post" action="{{url('/pacientes')}}"
-     enctype="multipart/form-data">
+    <form name="formEdit" id="formEdit" method="post" action="{{url("pacientes/$patient->id")}}"
+    enctype="multipart/form-data">
+        @method('PUT')
         @csrf
-        @include('admin.patients.form', ['botao' => '<input class="btn btn-primary"
-         type="submit" value="Cadastrar">','botao2' => '<a class="btn btn-secondary" 
-         href="/pacientes">Voltar</a>'])
+        @include('admin.patients.form', [ 'botao' => '<input class="btn btn-primary mt-5"
+         type="submit" value="Cadastrar">','botao2' => '<a class="btn btn-secondary mt-5" 
+         href="/">Voltar</a>', 'full' => '<!--'])
     </form>
 @endsection

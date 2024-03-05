@@ -33,14 +33,13 @@ class AuthenticatedSessionController extends Controller
         */
 
         $credentials = $request->only('email','password');
-        
 
         //dd($credentials);
 
         if(Auth::attempt($credentials)){
             return redirect()->route('dashboard');
         } else if(Auth::guard('patient')->attempt($credentials)){
-            return redirect()->route('patient.dashboard');
+            return redirect()->route('patient.full');
         }
         else if(Auth::guard('doctor')->attempt($credentials)){
             return redirect()->route('doctor.dashboard');

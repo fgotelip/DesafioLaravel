@@ -27,6 +27,12 @@ class PatientController extends Controller
         return view('admin.patients.fullregister', compact('patient','helfcareplans'));
     }
 
+    public function dashboard(Patient $patient)
+    {
+        $helfcareplans = Helfcareplan::all();
+        return view('admin.patients.dashboard', compact('patient','helfcareplans'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
