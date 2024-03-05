@@ -8,6 +8,8 @@
   Planos de Saúde
 @endsection
 
+@include('admin.sidebar')
+
 @section('link')
   "/planosdesaude/create"
 @endsection

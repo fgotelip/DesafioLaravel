@@ -8,6 +8,8 @@
   Especialidades
 @endsection
 
+@include('admin.sidebar')
+
 @section('link')
   "/especialidades/create"
 @endsection

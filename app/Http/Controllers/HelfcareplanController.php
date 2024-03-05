@@ -16,7 +16,7 @@ class HelfcareplanController extends Controller
      */
     public function index()
     {
-        $helfcareplans = Helfcareplan::paginate(4);
+        $helfcareplans = Helfcareplan::paginate(3);
 
         return view('admin.helfcareplans.index', compact('helfcareplans'));
     }

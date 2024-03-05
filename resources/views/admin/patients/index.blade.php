@@ -8,6 +8,10 @@
   Pacientes
 @endsection
 
+@include('admin.sidebar')
+
+
+
 @section('link')
   "/pacientes/create"
 @endsection

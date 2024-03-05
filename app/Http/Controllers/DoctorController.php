@@ -18,7 +18,7 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $doctors = Doctor::paginate(4);
+        $doctors = Doctor::paginate(3);
 
         return view('admin.doctors.index', compact('doctors'));
     }

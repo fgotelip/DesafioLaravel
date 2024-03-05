@@ -1,22 +1,14 @@
 @extends('layouts.crud')
 
 @section('title')
-  Medicos
+  Médicos
 @endsection
-
-<div class="absolute mt-2 bg-slate-300">
-  <div class="ml-2">
-    <a href="{{url("dashboard")}}" class="p-4 text-black no-underline"><x-dashboard></x-dashboard></a>
-    <a href="{{url("pacientes")}}" class="p-4 text-black no-underline"><x-paciente></x-paciente></a>
-    <a href="{{url("medicos")}}" class="p-4 text-black no-underline"><x-medico></x-medico></a>
-    <a href="{{url("especialidades")}}" class="p-4 text-black no-underline"><x-espec></x-espec></a>
-    <a href="{{url("planosdesaude")}}" class="p-4 text-black no-underline"><x-plano></x-plano></a>
-  </div>
-</div>
 
 @section('title2')
-  Medicos
+  Médicos
 @endsection
+
+@include('admin.sidebar')
 
 @section('link')
   "/medicos/create"
