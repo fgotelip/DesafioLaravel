@@ -26,6 +26,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/completar_cadastro', [PatientController::class, 'full'])->name('patient.full');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 

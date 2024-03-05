@@ -33,6 +33,7 @@ class AuthenticatedSessionController extends Controller
         */
 
         $credentials = $request->only('email','password');
+        
 
         //dd($credentials);
 

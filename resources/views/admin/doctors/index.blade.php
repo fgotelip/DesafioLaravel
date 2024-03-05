@@ -38,7 +38,8 @@
               </form>
           </div>
         </td>
-      </tr>                   
+      </tr>  
+                       
   @endforeach
 @endsection
 

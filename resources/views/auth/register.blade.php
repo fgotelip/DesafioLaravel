@@ -1,4 +1,8 @@
 <x-guest-layout>
+    <div class="text-center">
+        <h1>Paciente - Cadastro Inicial</h1>
+    </div>
+
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -26,7 +30,6 @@
                             required autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
-            <x-secondary-button>Cadastro</x-secondary-button>
         </div>
 
         <!-- Confirm Password -->
@@ -40,7 +43,23 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
-        <div class="flex items-center justify-end mt-4">
+        <div class="mt-4">
+            <x-input-label for="wasbornat" value="Data de Nascimento" />
+
+            <x-text-input id="wasbornat" class="block mt-1 w-full"
+                            type="date"
+                            name="wasbornat" required autocomplete="new-password"/>
+
+            <x-input-error :messages="$errors->get('wasbornat')" class="mt-2" />
+        </div>
+
+
+        <div class="p-4">
+            <a href="{{url("")}}"><x-dashboard><x-texto>Página inicial</x-texto></x-dashboard></a>
+        </div>
+
+
+        <div class="flex items-center justify-between">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
                 {{ __('Already registered?') }}
             </a>

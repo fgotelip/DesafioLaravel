@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use App\Providers\RouteServiceProvider;
+use App\Models\Patient;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use App\Http\Requests\StorePatientRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
@@ -28,24 +27,26 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(StorePatientRequest $request): RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Patient::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'wasbornat' => ['required','date'],
         ]);
 
-        $user = User::create([
+        $patient = Patient::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'wasbornat' => $request->wasbornat,
         ]);
 
-        event(new Registered($user));
+        event(new Registered($patient));
 
-        Auth::login($user);
+        Auth::login($patient);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('patient.dashboard');
     }
 }
