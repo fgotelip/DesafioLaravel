@@ -4,6 +4,7 @@
         <strong>
             {!! implode('<br/>', $errors->all('<span>:message</span>')) !!}
         </strong>
+        </strong>
     </div>
 @endif
 
@@ -12,7 +13,7 @@
     <div class="form-group col-sm-12 col-md-4">
         <label for="name" class="required">Nome</label>
         <input type="text" name="name" id="name" autofocus class="form-control" 
-        required value="{{ old('name', $patient->name) }}"  @if (isset($view)) {!! $view !!}
+        required value="{{ Auth::guard('patient')->user()->name }}"  @if (isset($view)) {!! $view !!}
         @endif>
     </div>
 
@@ -36,7 +37,6 @@
          required value="{{ old('wasbornat', $patient->wasbornat) }}" @if (isset($view)) {!! $view !!}
         @endif>
     </div>
-
 
     <div class="form-group col-sm-12 col-md-4">
         <label for="address" class="required">Endereço</label>

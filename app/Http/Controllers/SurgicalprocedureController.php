@@ -7,8 +7,8 @@ use App\Models\Doctor;
 use App\Models\Specialty;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSurgicalprocedureRequest;
-use App\Http\Requests\UpdateSurgicalprocedureRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SurgicalprocedureController extends Controller
 {
@@ -16,9 +16,14 @@ class SurgicalprocedureController extends Controller
     {
         $doctors = Doctor::all();
         $specialties = Specialty::all();
-        $surgicalprocedures = Surgicalprocedure::paginate(3);
+        $surgicalprocedures = Surgicalprocedure::where('patient_id','=', Auth::guard('patient')->user()->id)->get();
 
         return view('admin.surgicalprocedures.index', compact('surgicalprocedures','doctors','specialties'));
+    }
+
+    public function catchdoctors(Request $request){
+        $catch = Doctor::where('specialty_id','=',$request->id)->get();
+        return response()->json($catch);
     }
 
     /**
@@ -38,6 +43,7 @@ class SurgicalprocedureController extends Controller
     public function store(StoreSurgicalprocedureRequest $request)
     {
         $data = $request->validated();
+        $data['patient_id'] = Auth::guard('patient')->user()->id;
         Surgicalprocedure::create($data);
 
         return redirect()->route('surgicalprocedure.index')->with('success', true);

@@ -75,3 +75,21 @@
 
 
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).on('change', '#specialty_id', function(){
+            $("#doctor_id").html(''); //Limpa o select de animais
+            var valor = $("option:selected", this).val();
+            $.ajax({
+                url: `/catchdoctors/${valor}`,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data){
+                    for(var i = 0; i < data.length; i++){
+                        $("#doctor_id").append($("<option></option>").text(data[i].name).val(data[i].id))
+                    }
+                }
+            });
+        });
+</script>

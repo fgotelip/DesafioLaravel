@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Specialty;
+use App\Models\Patient;
 use App\Models\Doctor;
 
 /**
@@ -20,6 +21,7 @@ class SurgicalprocedureFactory extends Factory
     {
         return [
             'specialty_id' => Specialty::inRandomOrder()->first()->id,
+            'patient_id' => Patient::inRandomOrder()->first()->id,
             'doctor_id' => Doctor::inRandomOrder()->first()->id,
             'inicialtime' => fake()->dateTime($max = 'now'),
             'finaltime' => fake()->dateTime($max = 'now'),

@@ -27,4 +27,9 @@ class Surgicalprocedure extends Model
     {
         return $this->belongsTo(Doctor::class);
     }
+
+    public function patient(): BelongsTo
+    {
+        return $this->belongsTo(Patient::class);
+    }
 }
