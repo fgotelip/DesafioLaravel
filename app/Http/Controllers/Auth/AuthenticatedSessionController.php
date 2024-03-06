@@ -39,7 +39,7 @@ class AuthenticatedSessionController extends Controller
         if(Auth::attempt($credentials)){
             return redirect()->route('dashboard');
         } else if(Auth::guard('patient')->attempt($credentials)){
-            return redirect()->route('patient.full');
+            return redirect()->route('patient.dashboard');
         }
         else if(Auth::guard('doctor')->attempt($credentials)){
             return redirect()->route('doctor.dashboard');

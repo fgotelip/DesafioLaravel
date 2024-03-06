@@ -15,8 +15,6 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'guard' => 'patient',
-        'guard' => 'doctor',
         'passwords' => 'users',
     ],
 
