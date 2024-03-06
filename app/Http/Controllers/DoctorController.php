@@ -23,6 +23,18 @@ class DoctorController extends Controller
         return view('admin.doctors.index', compact('doctors'));
     }
 
+    public function full(Doctor $doctor)
+    {
+        $specialties = Specialty::all();
+        return view('admin.doctors.fullregister', compact('doctor','specialties'));
+    }
+
+    public function dashboard(Doctor $doctor)
+    {
+        $specialties = Specialty::all();
+        return view('admin.doctors.dashboard', compact('doctor','specialties'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

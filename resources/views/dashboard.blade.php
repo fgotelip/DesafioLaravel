@@ -4,6 +4,8 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
+
+    <x-slot name="include">@include('layouts.navigation')</x-slot>
     
 
     <div class="py-12">

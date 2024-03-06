@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Doctor;
 use App\Models\Helfcareplan;
 use Illuminate\Support\Str;
 

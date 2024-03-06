@@ -20,11 +20,11 @@
             @method('DELETE')
 
             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                {{ __('Are you sure you want to delete your account?') }}
+                Tem certeza que deseja deletar essa conta?
             </h2>
 
             <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.') }}
+                Uma vez deletada, todos seus dados serão permanentemente deletados. Por favor digite sua senha para confirmar se você gostaria de deletar permanentemente sua conta.
             </p>
 
             <div class="mt-6">

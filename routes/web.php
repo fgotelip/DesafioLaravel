@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\SpecialtyController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\SurgicalprocedureController;
 use App\Http\Controllers\HelfcareplanController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,12 +36,15 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['patient'])->group(function () {
     Route::get('dashboard/paciente', [PatientController::class, 'dashboard'])->name('patient.dashboard');
+    Route::get('/procedimentocirugico', [SurgicalprocedureController::class, 'index'])->name('surgicalprocedure.index');
+    Route::get('/procedimentocirugico/create', [SurgicalprocedureController::class, 'create'])->name('surgicalprocedure.create');
+    Route::post('/procedimentocirugico', [SurgicalprocedureController::class, 'store'])->name('surgicalprocedure.store');
+    Route::get('/procedimentocirugico/{surgicalprocedure}', [SurgicalprocedureController::class, 'show'])->name('surgicalprocedure.show');
+    Route::delete('/procedimentocirugico/{surgicalprocedure}', [SurgicalprocedureController::class, 'destroy'])->name('surgicalprocedure.destroy');
 });
 
 Route::middleware(['doctor'])->group(function () {
-    Route::get('/dashboard/medico', function(){
-        return view('welcome');
-    })->name('doctor.dashboard');
+    Route::get('dashboard/medico', [PatientController::class, 'dashboard'])->name('doctor.dashboard');
 });
 
 Route::middleware(['doctor','patient'])->group(function () {
