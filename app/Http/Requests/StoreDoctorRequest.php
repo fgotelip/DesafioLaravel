@@ -30,7 +30,7 @@ class StoreDoctorRequest extends FormRequest
             'tell' => 'required|string|min:9|max:30',
             'cpf' => 'required|string|size:15',
             'workhours' => 'required|string|in:diurno,noturno,integral',
-            'crm' => 'required|integer|size:6',
+            'crm' => 'required|integer',
             'pic' => 'required|file',
             'specialty_id' => 'required|exists:specialties,id|integer',
         ];

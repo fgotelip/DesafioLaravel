@@ -43,7 +43,8 @@ class SurgicalprocedureController extends Controller
     public function store(StoreSurgicalprocedureRequest $request)
     {
         $data = $request->validated();
-        $data['patient_id'] = Auth::guard('patient')->user()->id;
+        $id = Auth::guard('patient')->user()->id;
+        $data['patient_id'] = $id;
         Surgicalprocedure::create($data);
 
         return redirect()->route('surgicalprocedure.index')->with('success', true);

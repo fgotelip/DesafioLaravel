@@ -7,10 +7,25 @@
     </div>
 @endif
 
-<div class="form-group col-sm-12 col-md-4 ml-15 mt-3">
+<div class="text-center row">
+            
+            @php $id = $surgicalprocedure->specialty_id @endphp
+            @foreach($specialties as $specialty)
+                  @if($specialty->id==$id) @php $certa=$specialty @endphp @endif
+            @endforeach 
+
+            @php $id1 = $surgicalprocedure->doctor_id @endphp
+            @foreach($doctors as $doctor)
+                  @if($doctor->id==$id1) @php $certa1=$doctor @endphp @endif
+            @endforeach 
+
+    <div class="form-group col-sm-12 col-md-4 ml-15 @if (isset($new)) {!! $new !!} @endif">
         <label for="specialty_id">Procedimento</label>
+        <input type="text" name="specialty_id" id="specialty_id" autofocus class="form-control" 
+        required value="{{$certa->name}}"  @if (isset($view)) {!! $view !!}
+        @endif @if (isset($new1)) {!! $new1 !!} @endif>
         <select class="form-group" name="specialty_id" id="specialty_id" 
-        @if (isset($view)) {!! $view !!} @endif>
+        @if (isset($view1)) {!! $view1 !!} @endif>
             <option value="">Selecione</option>
             @foreach($specialties as $specialty)
                 <option {{$surgicalprocedure->id == $specialty->id ? "selected": ''}} 
@@ -20,10 +35,13 @@
         </select>
     </div>
 
-    <div class="form-group col-sm-12 col-md-4 ml-15 mt-3">
+    <div class="form-group col-sm-12 col-md-4 ml-15 @if (isset($new)) {!! $new !!} @endif">
         <label for="doctor_id">Médico</label>
-        <select class="form-group" name="doctor_id" id="doctor_id" 
-        @if (isset($view)) {!! $view !!} @endif>
+        <input type="text" name="doctor_id" id="doctor_id" autofocus class="form-control" 
+        required value="{{$certa1->name}}"  @if (isset($view)) {!! $view !!}
+        @endif @if (isset($new1)) {!! $new1 !!} @endif>
+        <select  class="form-group" name="doctor_id" id="doctor_id" 
+        @if (isset($view1)) {!! $view1 !!} @endif>
             <option value="">Selecione</option>
             @foreach($doctors as $doctor)
                 <option {{$surgicalprocedure->id == $doctor->id ? "selected": ''}} 
@@ -33,12 +51,10 @@
         </select>
     </div>
 
-
-<div class="text-center row">
     <div class="form-group col-sm-12 col-md-4">
-        <label for="inialtime" class="required">Inicío</label>
-        <input type="datetime-local" name="inialtime" id="inialtime" autofocus class="form-control" 
-        required value="{{ old('inialtime', $surgicalprocedure->inialtime) }}"  @if (isset($view)) {!! $view !!}
+        <label for="inicialtime" class="required">Inicío</label>
+        <input type="datetime-local" name="inicialtime" id="inicialtime" autofocus class="form-control" 
+        required value="{{ old('inicialtime', $surgicalprocedure->inicialtime) }}"  @if (isset($view)) {!! $view !!}
         @endif>
     </div>
 
@@ -49,10 +65,13 @@
         @endif>
     </div>
 
-    <div class="form-group col-sm-12 col-md-4 ml-15 mt-3">
+    <div class="form-group col-sm-12 col-md-4 ml-15  @if (isset($new)) {!! $new !!} @endif">
         <label for="value">Valor</label>
-        <select class="form-group" name="value" id="value" 
-        @if (isset($view)) {!! $view !!} @endif>
+        <input type="number" name="value" id="value" autofocus class="form-control" 
+        required value="{{ old('value', $surgicalprocedure->value) }}"  @if (isset($view)) {!! $view !!}
+        @endif @if (isset($new1)) {!! $new1 !!} @endif>
+        <select class="form-group" name="value" id="value"
+        @if (isset($view1)) {!! $view1 !!} @endif>
             <option value="">Selecione</option>
             @foreach($specialties as $specialty)
                 <option {{$surgicalprocedure->id == $specialty->id ? "selected": ''}} 
@@ -62,9 +81,11 @@
         </select>
     </div>
 
+   
+
     
 
-    <div class="text-center">
+    <div class="text-center mt-5">
         @if(isset($botao))
             {!! $botao !!}
         @endif

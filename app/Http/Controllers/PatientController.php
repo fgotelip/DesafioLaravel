@@ -27,6 +27,12 @@ class PatientController extends Controller
         return view('admin.patients.fullregister', compact('patient','helfcareplans'));
     }
 
+    public function editprofile(Patient $patient)
+    {
+        $helfcareplans = Helfcareplan::all();
+        return view('admin.patients.editprofile', compact('patient','helfcareplans'));
+    }
+
     public function dashboard(Patient $patient)
     {
         $helfcareplans = Helfcareplan::all();

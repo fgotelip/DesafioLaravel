@@ -20,7 +20,6 @@ class DoctorController extends Controller
     {
 
         $doctors = Doctor::paginate(3);
-        dd($doctors);
         return view('admin.doctors.index', compact('doctors'));
     }
 

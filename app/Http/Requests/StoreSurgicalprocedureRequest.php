@@ -27,6 +27,7 @@ class StoreSurgicalprocedureRequest extends FormRequest
             'inicialtime' => 'required',
             'finaltime' => 'required',
             'value' => 'required',
+            'patient_id' => 'nullable',
         ];
     }
 }

@@ -27,7 +27,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/completar_cadastro', [PatientController::class, 'full'])->name('patient.full');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -35,7 +35,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['patient'])->group(function () {
+    Route::get('/profile/paciente', [PatientController::class, 'editprofile'])->name('profile.patient.edit');
     Route::put('/pacientes/{patient}', [PatientController::class, 'update'])->name('patient.update');
+    Route::get('/completar_cadastro', [PatientController::class, 'full'])->name('patient.full');
     Route::get('dashboard/paciente', [PatientController::class, 'dashboard'])->name('patient.dashboard');
     Route::get('/procedimentocirugico', [SurgicalprocedureController::class, 'index'])->name('surgicalprocedure.index');
     Route::get('/procedimentocirugico/create', [SurgicalprocedureController::class, 'create'])->name('surgicalprocedure.create');
@@ -46,7 +48,7 @@ Route::middleware(['patient'])->group(function () {
 });
 
 Route::middleware(['doctor'])->group(function () {
-    Route::get('dashboard/medico', [PatientController::class, 'dashboard'])->name('doctor.dashboard');
+    Route::get('dashboard/medico', [DoctorController::class, 'dashboard'])->name('doctor.dashboard');
 });
 
 Route::middleware(['doctor','patient'])->group(function () {
@@ -56,13 +58,14 @@ Route::middleware(['doctor','patient'])->group(function () {
 Route::middleware('auth')->group(function () {
    
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/pacientes', [PatientController::class, 'index'])->name('patient.index');
     Route::get('/pacientes/create', [PatientController::class, 'create'])->name('patient.create');
     Route::get('/pacientes/{patient}/edit', [PatientController::class, 'edit'])->name('patient.edit');
     Route::get('/pacientes/{patient}', [PatientController::class, 'show'])->name('patient.show');
     Route::post('/pacientes', [PatientController::class, 'store'])->name('patient.store');
+    //Route::put('/pacientes/{patient}', [PatientController::class, 'update'])->name('patient.update');
     Route::delete('/pacientes/{patient}', [PatientController::class, 'destroy'])->name('patient.destroy');
 
     Route::get('/medicos', [DoctorController::class, 'index'])->name('doctor.index');

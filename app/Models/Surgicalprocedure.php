@@ -16,6 +16,7 @@ class Surgicalprocedure extends Model
         'inicialtime',
         'finaltime',
         'value',
+        'patient_id',
     ];
 
     public function specialty(): BelongsTo

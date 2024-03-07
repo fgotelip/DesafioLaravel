@@ -24,7 +24,7 @@ class StorePatientRequest extends FormRequest
         return [
             'name' => 'required|string|min:2|max:100',
             'email' => 'required|email|max:100|unique:doctors,email',
-            'password' => 'required|string|min:6|max:30',
+            'password' => 'required|string|min:6|max:100',
             'wasbornat' => 'required|date',
             'address' => 'nullable|string|min:10|max:100',
             'tell' => 'nullable|string|min:9|max:30',

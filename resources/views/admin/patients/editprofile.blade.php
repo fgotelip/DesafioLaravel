@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @section('title')
-    Completar Cadastro
+    Editar Dados
 @endsection
 
 @section('title2')
-    Completar Cadastro
+    Editar Dados
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
         @method('PUT')
         @csrf
         @include('admin.patients.formprofile', [ 'botao' => '<input class="btn btn-primary mt-5"
-         type="submit" value="Cadastrar">','botao2' => '<a class="btn btn-secondary mt-5" 
-         href="/">Voltar</a>', 'full' => 'hidden'])
+         type="submit" value="Editar">','botao2' => '<a class="btn btn-secondary mt-5" 
+         href="/dashboard">Voltar</a>'])
     </form>
 @endsection

@@ -14,6 +14,6 @@
         @csrf
         @include('admin.surgicalprocedures.form', ['botao' => '<input class="btn btn-primary"
          type="submit" value="Agendar">','botao2' => '<a class="btn btn-secondary" 
-         href="/procedimentocirugico">Voltar</a>'])
+         href="/procedimentocirugico">Voltar</a>', 'new' => 'mt-3', 'new1' => 'hidden'])
     </form>
 @endsection

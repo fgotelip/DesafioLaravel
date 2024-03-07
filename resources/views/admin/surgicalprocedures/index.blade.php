@@ -19,16 +19,21 @@
 @section('thead')
   <x-th>Id</x-th>
   <x-th>Procedimento</x-th>
-  <x-th>Data e Hora</x-th>
+  <x-th>Data e Hora de Início</x-th>
   <th class="text-left">Ação</th>
 @endsection
 
+
 @section('tbody')
   @foreach($surgicalprocedures as $surgicalprocedure)
+      @php $id = $surgicalprocedure->specialty_id @endphp
+  
       <tr>
         <th scope="row">{{$surgicalprocedure->id}}</th>
-        <td>{{$surgicalprocedure->inicialtime}}</td>
-        <td>{{$surgicalprocedure->finaltime}}</td>      
+        <td> @foreach($specialties as $specialty)
+                  @if($specialty->id==$id) @php $certa=$specialty @endphp @endif
+            @endforeach {{$certa->name}}</td>    
+        <td>{{$surgicalprocedure->inicialtime}}</td>  
         <td>
           <div class="flex">
               <a href="{{url("procedimentocirugico/$surgicalprocedure->id")}}" class="p-4 text-black"><x-read></x-read></a>
