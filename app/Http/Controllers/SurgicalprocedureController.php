@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSurgicalprocedureRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class SurgicalprocedureController extends Controller
 {
@@ -24,9 +25,18 @@ class SurgicalprocedureController extends Controller
     {
         $doctors = Doctor::all();
         $specialties = Specialty::all();
-        $surgicalprocedures = Surgicalprocedure::where('doctor_id','=', Auth::guard('doctor')->user()->id)->get();
+        $surgicalprocedures = Surgicalprocedure::where('doctor_id','=', Auth::guard('doctor')->user()->id)->orderBy('inicialtime', 'asc')->get();
 
         return view('admin.surgicalprocedures.indexd', compact('surgicalprocedures','doctors','specialties'));
+    }
+
+    public function pdf()
+    {
+        $doctors = Doctor::all();
+        $specialties = Specialty::all();
+        $surgicalprocedures = Surgicalprocedure::where('doctor_id','=', Auth::guard('doctor')->user()->id)->orderBy('inicialtime', 'asc')->get();
+        $pdf = Pdf::loadView('admin.surgicalprocedures.pdf', compact('surgicalprocedures','doctors','specialties'));
+        return $pdf->setPaper('a4')->stream('relatorio_cirurgias.pdf');
     }
 
     public function catchdoctors(Request $request){

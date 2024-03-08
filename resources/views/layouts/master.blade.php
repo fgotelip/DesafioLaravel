@@ -8,6 +8,7 @@
     <title>@yield('title')</title>
 </head>
 <body>
+    @yield('pdf')
     <div class="text-center">
         <h1 class="mt-20">@yield('title2')</h1>
     </div>

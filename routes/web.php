@@ -50,6 +50,7 @@ Route::middleware(['patient'])->group(function () {
 });
 
 Route::middleware(['doctor'])->group(function () {
+    Route::get('/pdf', [SurgicalprocedureController::class, 'pdf'])->name('pdf');
     Route::get('/procedimentocirugico', [SurgicalprocedureController::class, 'indexd'])->name('surgicalprocedure.indexd');
     Route::get('procedimentocirugico/{surgicalprocedure}', [SurgicalprocedureController::class, 'show'])->name('surgicalprocedure.showd');
     Route::put('/medicos/{doctor}', [DoctorController::class, 'update'])->name('doctor.update');

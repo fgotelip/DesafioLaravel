@@ -13,6 +13,6 @@ class SurgicalprocedureSeeder extends Seeder
      */
     public function run(): void
     {
-        Surgicalprocedure::factory()->count(6)->create();
+        Surgicalprocedure::factory()->count(50)->create();
     }
 }

@@ -23,9 +23,9 @@ class SurgicalprocedureFactory extends Factory
             'specialty_id' => Specialty::inRandomOrder()->first()->id,
             'patient_id' => Patient::inRandomOrder()->first()->id,
             'doctor_id' => Doctor::inRandomOrder()->first()->id,
-            'inicialtime' => fake()->dateTime($max = 'now'),
-            'finaltime' => fake()->dateTime($max = 'now'),
-            'value' => $this->faker->unique()->randomElement([
+            'inicialtime' => fake()->dateTime($max = 'now')->format('2023-m-d H:i:s'),
+            'finaltime' => fake()->dateTime($max = 'now')->format('2023-m-d H:i:s'),
+            'value' => $this->faker->randomElement([
                  500,
                  150,
                  200,
