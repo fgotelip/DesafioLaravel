@@ -8,6 +8,7 @@
     </div>
 @endif
 
+@php $id = Auth::guard('patient')->user()->helfcareplan_id @endphp
 
 <div class="text-center row">
     <div class="form-group col-sm-12 col-md-4">
@@ -79,7 +80,7 @@
        >
             <option value="">Selecione</option>
             @foreach($helfcareplans as $helfcareplan)
-                <option {{Auth::guard('patient')->user()->id == $helfcareplan->id ? "selected": ''}} 
+                <option {{$helfcareplan->id == $id ? "selected": ''}} 
                     value="{{$helfcareplan->id}}">{{$helfcareplan->name}}</option>
             @endforeach
 

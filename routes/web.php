@@ -50,7 +50,10 @@ Route::middleware(['patient'])->group(function () {
 });
 
 Route::middleware(['doctor'])->group(function () {
-    Route::get('/profile/medico', [PatientController::class, 'editprofile'])->name('profile.doctor.edit');
+    Route::get('/procedimentocirugico', [SurgicalprocedureController::class, 'indexd'])->name('surgicalprocedure.indexd');
+    Route::get('procedimentocirugico/{surgicalprocedure}', [SurgicalprocedureController::class, 'show'])->name('surgicalprocedure.showd');
+    Route::put('/medicos/{doctor}', [DoctorController::class, 'update'])->name('doctor.update');
+    Route::get('/profile/medico', [DoctorController::class, 'editprofile'])->name('profile.doctor.edit');
     Route::post('logout/doctor', [AuthenticatedSessionController::class, 'destroy'])->name('doctor.logout');
     Route::get('dashboard/medico', [DoctorController::class, 'dashboard'])->name('doctor.dashboard');
 });
@@ -77,7 +80,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/medicos/{doctor}/edit', [DoctorController::class, 'edit'])->name('doctor.edit');
     Route::get('/medicos/{doctor}', [DoctorController::class, 'show'])->name('doctor.show');
     Route::post('/medicos', [DoctorController::class, 'store'])->name('doctor.store');
-    Route::put('/medicos/{doctor}', [DoctorController::class, 'update'])->name('doctor.update');
+    Route::put('/admin/{doctor}', [DoctorController::class, 'update'])->name('doctor.admin.update');
     Route::delete('/medicos/{doctor}', [DoctorController::class, 'destroy'])->name('doctor.destroy');
 
 

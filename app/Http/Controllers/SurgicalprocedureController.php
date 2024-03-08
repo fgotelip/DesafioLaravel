@@ -20,6 +20,14 @@ class SurgicalprocedureController extends Controller
 
         return view('admin.surgicalprocedures.index', compact('surgicalprocedures','doctors','specialties'));
     }
+    public function indexd()
+    {
+        $doctors = Doctor::all();
+        $specialties = Specialty::all();
+        $surgicalprocedures = Surgicalprocedure::where('doctor_id','=', Auth::guard('doctor')->user()->id)->get();
+
+        return view('admin.surgicalprocedures.indexd', compact('surgicalprocedures','doctors','specialties'));
+    }
 
     public function catchdoctors(Request $request){
         $catch = Doctor::where('specialty_id','=',$request->id)->get();
@@ -67,3 +75,5 @@ class SurgicalprocedureController extends Controller
         return redirect()->route('surgicalprocedure.index')->with('success',true);
     }
 }
+
+
