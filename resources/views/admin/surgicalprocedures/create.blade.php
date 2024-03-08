@@ -12,8 +12,8 @@
     <form name="formCad" id="formCad" method="post" action="{{url('/procedimentocirugico')}}"
      enctype="multipart/form-data">
         @csrf
-        @include('admin.surgicalprocedures.form', ['botao' => '<input class="btn btn-primary"
+        @include('admin.surgicalprocedures.formcreate', ['botao' => '<input class="btn btn-primary"
          type="submit" value="Agendar">','botao2' => '<a class="btn btn-secondary" 
-         href="/procedimentocirugico">Voltar</a>', 'new' => 'mt-3', 'new1' => 'hidden'])
+         href="/procedimentocirugico">Voltar</a>'])
     </form>
 @endsection

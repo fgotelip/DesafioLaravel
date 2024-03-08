@@ -10,5 +10,5 @@
 
 @section('content')
         @include('admin.doctors.form', ['view' => 'readonly' ,'botao' =>
-         '<a class="btn btn-secondary" href="/medicos">Voltar</a>'])
+         '<a class="btn btn-secondary" href="/medicos">Voltar</a>', 'view1' => 'disabled', 'pic' => 'Foto'])
 @endsection

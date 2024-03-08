@@ -31,11 +31,7 @@
           <div class="flex">
               <a href="{{url("planosdesaude/$helfcareplan->id")}}" class="p-4 text-black"><x-read></x-read></a>
               <a href="{{url("planosdesaude/$helfcareplan->id/edit")}}" class="p-4 text-black"><x-edit></x-edit></a>
-              <form action="{{url("planosdesaude/$helfcareplan->id")}}" method="post">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="p-4 text-black"><x-delete></x-delete></button>
-              </form>
+              <x-deletemodal>{{url("planosdesaude/$helfcareplan->id")}}</x-deletemodal>
           </div>
         </td>
       </tr>                   

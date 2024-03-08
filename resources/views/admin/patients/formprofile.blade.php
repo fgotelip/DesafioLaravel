@@ -68,8 +68,8 @@
     <div class="form-group col-sm-12 col-md-4">
         <label for="pic" class="required">Foto</label>
         <input type="file" name="pic" id="pic" autofocus class="form-control"
-         required  value="{{asset('storage/paciente/' . Auth::guard('patient')->user()->pic)}}"
-       >
+         value="{{asset('storage/paciente/' . Auth::guard('patient')->user()->pic)}}"
+       required>
         <img class="w-1/5 rounded-circle" src="{{asset('storage/paciente/' . Auth::guard('patient')->user()->pic)}}">
     </div>
 

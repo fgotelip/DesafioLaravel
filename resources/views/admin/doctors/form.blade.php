@@ -8,6 +8,7 @@
 @endif
 
 
+@php $id = $doctor->specialty_id @endphp
 
 <div class="text-center row">
     <div class="form-group col-sm-12 col-md-4">
@@ -59,11 +60,10 @@
         @endif>
     </div>
     
-    <div class="form-group col-sm-12 col-md-4">
+    <div class="form-group col-sm-12 col-md-4 mt-4">
         <label for="workhours" class="required">Turno</label>
-        <select class="form-group" name="workhours" id="workhours" required 
-        value="{{ old('workhours', $doctor->workhours ?? null)}}" 
-        @if (isset($view)) { !! $view !!} @endif>
+        <select  class="form-group" name="workhours" id="workhours" required 
+        value="{{ old('workhours', $doctor->workhours ?? null)}}" @if (isset($view1)) {!! $view1 !!} @endif>
             <option value="">Selecione</option>
             <option {{$doctor->workhours == "diurno" ? "selected":''}}>diurno</option>
             <option {{$doctor->workhours == "noturno" ? "selected":''}}>noturno</option>
@@ -80,9 +80,8 @@
 
     <div class="form-group col-sm-12 col-md-4">
         <label for="pic" class="required">Foto</label>
-        <input type="file" name="pic" id="pic" autofocus class="form-control"
-         required @if (isset($view)) {!! $view !!} @endif>
-         <img class="w-1/5 rounded-circle"src="{{asset('storage/medicos/' . $doctor->pic)}}">
+        <input required type="file" name="pic" id="pic"  autofocus class="form-control" @if (isset($view)) {!! $view !!}@endif>
+         <img class="w-1/5 rounded-circle" src="{{asset('storage/medicos/' . $doctor->pic)}}">
     </div>
 
     
@@ -90,10 +89,10 @@
     <div class="form-group col-sm-12 col-md-4 ml-15 mt-3">
         <label for="specialty_id">Especialidade</label>
         <select class="form-group" name="specialty_id" id="specialty_id" 
-        @if (isset($view)) {!! $view !!} @endif>
+        @if (isset($view1)) {!! $view1 !!} @endif>
             <option value="">Selecione</option>
             @foreach($specialties as $specialty)
-                <option {{$doctor->id == $specialty->id ? "selected": ''}} 
+                <option {{$specialty->id==$id ? "selected": ''}} 
                     value="{{$specialty->id}}">{{$specialty->name}}</option>
             @endforeach
 

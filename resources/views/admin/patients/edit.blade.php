@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <form name="formEdit" id="formEdit" method="post" action="{{url("pacientes/$patient->id")}}"
+    <form name="formEdit" id="formEdit" method="post" action="{{url("admin/$patient->id")}}"
     enctype="multipart/form-data">
         @method('PUT')
         @csrf

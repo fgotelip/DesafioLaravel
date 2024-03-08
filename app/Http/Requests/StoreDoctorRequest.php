@@ -24,14 +24,14 @@ class StoreDoctorRequest extends FormRequest
         return [
             'name' => 'required|string|min:2|max:100',
             'email' => 'required|email|max:100|unique:doctors,email',
-            'password' => 'required|string|min:6|max:30',
+            'password' => 'required|string|min:6|max:100',
             'wasbornat' => 'required|date',
             'address' => 'required|string|min:10|max:100',
             'tell' => 'required|string|min:9|max:30',
             'cpf' => 'required|string|size:15',
             'workhours' => 'required|string|in:diurno,noturno,integral',
             'crm' => 'required|integer',
-            'pic' => 'required|file',
+            'pic' => 'nullable|file',
             'specialty_id' => 'required|exists:specialties,id|integer',
         ];
     }

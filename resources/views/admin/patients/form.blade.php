@@ -7,6 +7,7 @@
     </div>
 @endif
 
+@php $id = $patient->helfcareplan_id @endphp
 
 <div class="text-center row">
     <div class="form-group col-sm-12 col-md-4">
@@ -68,19 +69,18 @@
 
     <div class="form-group col-sm-12 col-md-4">
         <label for="pic" class="required">Foto</label>
-        <input type="file" name="pic" id="pic" autofocus class="form-control"
-         required  value="{{asset('storage/paciente/' . $patient->pic)}}" @if (isset($view)) {!! $view !!}
-        @endif>
+        <input type="file" name="pic" id="pic" autofocus class="form-control"  value="{{asset('storage/paciente/' . $patient->pic)}}" @if (isset($view)) {!! $view !!}
+        @endif required>
         <img class="w-1/5 rounded-circle" src="{{asset('storage/paciente/' . $patient->pic)}}">
     </div>
 
     <div class="form-group col-sm-12 col-md-4 ml-15 mt-3">
         <label for="helfcareplan_id">Plano de Saúde</label>
         <select class="form-group" name="helfcareplan_id" id="helfcareplan_id" 
-        @if (isset($view)) {!! $view !!} @endif>
+        @if (isset($view1)) {!! $view1 !!} @endif>
             <option value="">Selecione</option>
             @foreach($helfcareplans as $helfcareplan)
-                <option {{$patient->id == $helfcareplan->id ? "selected": ''}} 
+                <option {{$helfcareplan->id==$id ? "selected": ''}} 
                     value="{{$helfcareplan->id}}">{{$helfcareplan->name}}</option>
             @endforeach
 

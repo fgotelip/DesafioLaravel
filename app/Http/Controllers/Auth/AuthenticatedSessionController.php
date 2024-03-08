@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
-use App\Providers\RouteServiceProvider;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -44,6 +44,11 @@ class AuthenticatedSessionController extends Controller
         else if(Auth::guard('doctor')->attempt($credentials)){
             return redirect()->route('doctor.dashboard');
         }
+
+        throw ValidationException::withMessages([
+            'email' => __('auth.failed'),
+            'password' => __('auth.failed'),
+        ]);
     }
 
     /**

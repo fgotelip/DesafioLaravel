@@ -6,7 +6,8 @@ use App\Models\Doctor;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
-
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Specialty;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;

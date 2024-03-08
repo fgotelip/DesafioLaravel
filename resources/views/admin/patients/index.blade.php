@@ -33,13 +33,9 @@
           <div class="flex">
               <a href="{{url("pacientes/$patient->id")}}" class="p-4 text-black"><x-read></x-read></a>
               <a href="{{url("pacientes/$patient->id/edit")}}" class="p-4 text-black"><x-edit></x-edit></a>
-              <form action="{{url("pacientes/$patient->id")}}" method="post">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="p-4 text-black"><x-delete></x-delete></button>
-              </form>
-          </div>
+              <x-deletemodal>{{url("pacientes/$patient->id")}}</x-deletemodal>
         </td>
+       
       </tr>                   
   @endforeach
 @endsection
@@ -47,3 +43,4 @@
 @section('pagination')
   {{$patients->links()}}
 @endsection
+

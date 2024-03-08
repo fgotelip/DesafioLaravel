@@ -27,7 +27,7 @@ class DoctorFactory extends Factory
             'wasbornat' => fake()->date($format = 'Y-m-d', $max = 'now'),
             'address' => fake()->address(),
             'tell' => fake()->phonenumber(),
-            'cpf' => fake()->unique()->numerify('###########'),
+            'cpf' => fake()->unique()->numerify('###############'),
             'workhours' => fake()->randomElement([
                 'diurno',
                 'noturno',

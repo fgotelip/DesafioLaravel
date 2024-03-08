@@ -6,6 +6,7 @@ use App\Http\Controllers\SpecialtyController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\SurgicalprocedureController;
 use App\Http\Controllers\HelfcareplanController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +36,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['patient'])->group(function () {
+    Route::post('logout/paciente', [AuthenticatedSessionController::class, 'destroy'])->name('patient.logout');
     Route::get('/profile/paciente', [PatientController::class, 'editprofile'])->name('profile.patient.edit');
     Route::put('/pacientes/{patient}', [PatientController::class, 'update'])->name('patient.update');
     Route::get('/completar_cadastro', [PatientController::class, 'full'])->name('patient.full');
@@ -48,10 +50,12 @@ Route::middleware(['patient'])->group(function () {
 });
 
 Route::middleware(['doctor'])->group(function () {
+    Route::get('/profile/medico', [PatientController::class, 'editprofile'])->name('profile.doctor.edit');
+    Route::post('logout/doctor', [AuthenticatedSessionController::class, 'destroy'])->name('doctor.logout');
     Route::get('dashboard/medico', [DoctorController::class, 'dashboard'])->name('doctor.dashboard');
 });
 
-Route::middleware(['doctor','patient'])->group(function () {
+Route::middleware(['auth','patient'])->group(function () {
     
 });
 
@@ -65,7 +69,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/pacientes/{patient}/edit', [PatientController::class, 'edit'])->name('patient.edit');
     Route::get('/pacientes/{patient}', [PatientController::class, 'show'])->name('patient.show');
     Route::post('/pacientes', [PatientController::class, 'store'])->name('patient.store');
-    //Route::put('/pacientes/{patient}', [PatientController::class, 'update'])->name('patient.update');
+    Route::put('/admin/{patient}', [PatientController::class, 'update'])->name('patient.admin.update');
     Route::delete('/pacientes/{patient}', [PatientController::class, 'destroy'])->name('patient.destroy');
 
     Route::get('/medicos', [DoctorController::class, 'index'])->name('doctor.index');

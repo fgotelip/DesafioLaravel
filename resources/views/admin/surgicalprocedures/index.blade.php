@@ -37,11 +37,7 @@
         <td>
           <div class="flex">
               <a href="{{url("procedimentocirugico/$surgicalprocedure->id")}}" class="p-4 text-black"><x-read></x-read></a>
-              <form action="{{url("procedimentocirugico/$surgicalprocedure->id")}}" method="post">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="p-4 text-black"><x-delete></x-delete></button>
-              </form>
+              <x-deletemodal>{{url("procedimentocirugico/$surgicalprocedure->id")}}</x-deletemodal>
           </div>
         </td>
       </tr>                   
