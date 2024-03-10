@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Surgicalprocedure;
 use App\Models\Doctor;
 use App\Models\Specialty;
+use App\Models\Patient;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSurgicalprocedureRequest;
 use Illuminate\Http\Request;
@@ -25,7 +26,7 @@ class SurgicalprocedureController extends Controller
     {
         $doctors = Doctor::all();
         $specialties = Specialty::all();
-        $surgicalprocedures = Surgicalprocedure::where('doctor_id','=', Auth::guard('doctor')->user()->id)->orderBy('inicialtime', 'asc')->get();
+        $surgicalprocedures = Surgicalprocedure::where('doctor_id','=', Auth::guard('doctor')->user()->id)->get();
 
         return view('admin.surgicalprocedures.indexd', compact('surgicalprocedures','doctors','specialties'));
     }
@@ -34,8 +35,9 @@ class SurgicalprocedureController extends Controller
     {
         $doctors = Doctor::all();
         $specialties = Specialty::all();
+        $patients = Patient::all();
         $surgicalprocedures = Surgicalprocedure::where('doctor_id','=', Auth::guard('doctor')->user()->id)->orderBy('inicialtime', 'asc')->get();
-        $pdf = Pdf::loadView('admin.surgicalprocedures.pdf', compact('surgicalprocedures','doctors','specialties'));
+        $pdf = Pdf::loadView('admin.surgicalprocedures.pdf', compact('surgicalprocedures','doctors','specialties','patients'));
         return $pdf->setPaper('a4')->stream('relatorio_cirurgias.pdf');
     }
 
