@@ -1,6 +1,10 @@
 <div class="text-center row">
             
+            @if(Auth::guard('doctor')->user()->specialty_id)
+            @php $id = Auth::guard('doctor')->user()->specialty_id @endphp
+            @else
             @php $id = $surgicalprocedure->specialty_id @endphp
+            @endif
             @foreach($specialties as $specialty)
                   @if($specialty->id==$id) @php $certa=$specialty @endphp @endif
             @endforeach 

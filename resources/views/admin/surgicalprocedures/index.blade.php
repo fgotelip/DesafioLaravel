@@ -44,3 +44,6 @@
   @endforeach
 @endsection
 
+@section('pagination')
+  {{$surgicalprocedures->links()}}
+@endsection

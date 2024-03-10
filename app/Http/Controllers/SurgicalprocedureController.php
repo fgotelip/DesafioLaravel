@@ -18,7 +18,7 @@ class SurgicalprocedureController extends Controller
     {
         $doctors = Doctor::all();
         $specialties = Specialty::all();
-        $surgicalprocedures = Surgicalprocedure::where('patient_id','=', Auth::guard('patient')->user()->id)->get();
+        $surgicalprocedures = Surgicalprocedure::where('patient_id','=', Auth::guard('patient')->user()->id)->paginate(3);
 
         return view('admin.surgicalprocedures.index', compact('surgicalprocedures','doctors','specialties'));
     }
@@ -26,7 +26,7 @@ class SurgicalprocedureController extends Controller
     {
         $doctors = Doctor::all();
         $specialties = Specialty::all();
-        $surgicalprocedures = Surgicalprocedure::where('doctor_id','=', Auth::guard('doctor')->user()->id)->get();
+        $surgicalprocedures = Surgicalprocedure::where('doctor_id','=', Auth::guard('doctor')->user()->id)->paginate(3);
 
         return view('admin.surgicalprocedures.indexd', compact('surgicalprocedures','doctors','specialties'));
     }

@@ -13,6 +13,7 @@
           <a @yield('doctor') href=@yield('link')>
            <button class="btn btn-success mt-5">Cadastrar</button>
           </a>
+          @yield('pdf')
     </div>
 
         <div class="container text-center mt-15 h-15vh">

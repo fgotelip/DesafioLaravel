@@ -9,7 +9,13 @@
 @endsection
 
 @section('doctor')
- hidden
+  hidden
+@endsection
+
+@section('pdf')
+<a href="{{url("/pdf")}}">
+           <button class="btn btn-success mt-5">Gerar Relatório</button>
+          </a>
 @endsection
 
 @section('clean')
@@ -27,11 +33,11 @@
   <th class="text-left">Ação</th>
 @endsection
 
+@php $id = Auth::guard('doctor')->user()->specialty_id @endphp
 
 @section('tbody')
+
   @foreach($surgicalprocedures as $surgicalprocedure)
-      @php $id = $surgicalprocedure->specialty_id @endphp
-  
       <tr>
         <th scope="row">{{$surgicalprocedure->id}}</th>
         <td> @foreach($specialties as $specialty)
@@ -42,6 +48,12 @@
               <a href="{{url("procedimentocirugico/$surgicalprocedure->id")}}" class="p-4 text-black"><x-read></x-read></a>
           
         </td>
-      </tr>                   
+      </tr> 
+
+                  
   @endforeach
+@endsection
+
+@section('pagination')
+  {{$surgicalprocedures->links()}}
 @endsection
