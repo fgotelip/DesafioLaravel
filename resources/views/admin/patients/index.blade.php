@@ -10,6 +10,12 @@
 
 @include('admin.sidebar')
 
+@section('pdf')
+<a href="{{url("/criaremail")}}">
+           <button class="btn btn-secondary mt-5">Enviar Email</button>
+          </a>
+@endsection
+
 
 
 @section('link')

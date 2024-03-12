@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ComunicatePatientsEvent;
 use App\Models\Patient;
 use App\Http\Requests\StorePatientRequest;
 use App\Http\Requests\UpdatePatientRequest;
@@ -10,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+
 
 class PatientController extends Controller
 {
@@ -107,6 +109,20 @@ class PatientController extends Controller
         $data['password'] = Hash::make($data['password']);
 
         return redirect()->route('patient.index')->with('success', true);
+    }
+
+    public function mail()
+    {
+        return view('admin.patients.mail');
+    }
+
+    public function sendmail(Request $request)
+    {
+        $evento = new ComunicatePatientsEvent(
+            $request->conteudo,
+        );
+        event($evento);
+        return redirect()->route('patient.mail')->with('success', true);
     }
 
     /**

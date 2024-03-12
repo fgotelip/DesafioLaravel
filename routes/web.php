@@ -9,6 +9,8 @@ use App\Http\Controllers\HelfcareplanController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,7 +66,9 @@ Route::middleware(['auth','patient'])->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-   
+    Route::get('/criaremail', [PatientController::class, 'mail'])->name('patient.mail');
+    Route::post('/enviandoemail', [PatientController::class, 'sendmail'])->name('patient.sendmail');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
