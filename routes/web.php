@@ -38,6 +38,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['patient'])->group(function () {
+    Route::delete('/deletar_conta/paciente/{patient}', [PatientController::class, 'deleteacount'])->name('patient.delete.acount');
     Route::post('logout/paciente', [AuthenticatedSessionController::class, 'destroy'])->name('patient.logout');
     Route::get('/profile/paciente', [PatientController::class, 'editprofile'])->name('profile.patient.edit');
     Route::put('/pacientes/{patient}', [PatientController::class, 'update'])->name('patient.update');
@@ -52,6 +53,7 @@ Route::middleware(['patient'])->group(function () {
 });
 
 Route::middleware(['doctor'])->group(function () {
+    Route::delete('/deletar_conta/medico/{doctor}', [DoctorController::class, 'deleteacount'])->name('doctor.delete.acount');
     Route::get('/pdf', [SurgicalprocedureController::class, 'pdf'])->name('pdf');
     Route::get('/procedimentocirugico', [SurgicalprocedureController::class, 'indexd'])->name('surgicalprocedure.indexd');
     Route::get('procedimentocirugico/{surgicalprocedure}', [SurgicalprocedureController::class, 'show'])->name('surgicalprocedure.showd');

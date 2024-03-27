@@ -17,4 +17,5 @@
          type="submit" value="Editar">','botao2' => '<a class="btn btn-secondary" 
          href="/pacientes">Voltar</a>'])
     </form>
+    
 @endsection

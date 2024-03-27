@@ -71,7 +71,7 @@
         <label for="pic" class="required">Foto</label>
         <input type="file" name="pic" id="pic" autofocus class="form-control"  value="{{asset('storage/paciente/' . $patient->pic)}}" @if (isset($view)) {!! $view !!}
         @endif required>
-        <img class="w-1/5 rounded-circle" src="{{asset('storage/paciente/' . $patient->pic)}}">
+        <img src="{{asset("storage/paciente/" . $patient->pic)}}">
     </div>
 
     <div class="form-group col-sm-12 col-md-4 ml-15 mt-3">

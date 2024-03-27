@@ -17,4 +17,6 @@
          type="submit" value="Editar">','botao2' => '<a class="btn btn-secondary mt-5" 
          href="/dashboard">Voltar</a>'])
     </form>
+    @php $id=Auth::guard('patient')->user()->id @endphp
+    <x-deletemodal>{{url("deletar_conta/paciente/$id")}}</x-deletemodal>
 @endsection

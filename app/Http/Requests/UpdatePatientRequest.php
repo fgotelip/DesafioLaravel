@@ -26,12 +26,12 @@ class UpdatePatientRequest extends FormRequest
             'email' => 'required|email|max:100|unique:doctors,email',
             'password' => 'required|string|min:6|max:100',
             'wasbornat' => 'required|date',
-            'address' => 'nullable|string|min:10|max:100',
-            'tell' => 'nullable|string|min:9|max:30',
-            'cpf' => 'nullable|string|size:15',
-            'typeofblood' => 'nullable|string|min:2|max:3',
+            'address' => 'required|string|min:10|max:100',
+            'tell' => 'required|string|min:9|max:30',
+            'cpf' => 'required|string|size:15',
+            'typeofblood' => 'required|string|min:2|max:3',
             'pic' => 'nullable|file',
-            'helfcareplan_id' => 'nullable|exists:helfcareplans,id|integer',
+            'helfcareplan_id' => 'required|exists:helfcareplans,id|integer',
         ];
     }
 

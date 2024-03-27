@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::table('surgicalprocedures', function (Blueprint $table) {
             $table->unsignedBigInteger('specialty_id')->nullable();
 
-            $table->foreign('specialty_id')->references('id')->on('specialties')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('specialty_id')->references('id')->on('specialties')->onDelete('set null')->onUpdate('cascade');
         });
     }
 

@@ -23,8 +23,8 @@ class StoreSpecialtyRequest extends FormRequest
     {
         return [
             'name' => 'required|min:2|max:100',
-            'description' => 'required|min:10|max:100',
-            'value' => 'required|numeric',
+            'description' => 'required|min:10|max:200',
+            'value' => 'required|numeric|min:0',
         ];
     }
 

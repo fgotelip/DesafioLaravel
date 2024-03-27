@@ -23,8 +23,8 @@ class UpdateHelfcareplanRequest extends FormRequest
     {
         return [
             'name' => 'required|min:2|max:100',
-            'description' => 'required|min:10|max:100',
-            'discount' => 'required|numeric',
+            'description' => 'required|min:10|max:200',
+            'discount' => 'required|numeric|min:0|max:100',
         ];
     }
 

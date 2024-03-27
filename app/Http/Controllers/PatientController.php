@@ -98,7 +98,7 @@ class PatientController extends Controller
     public function update(UpdatePatientRequest $request, Patient $patient)
     {
         $data = $request->validated();
-        if($data['pic']){
+        if(array_key_exists('pic', $data)){
             $file = $request->file('pic');
             $nameimg = $file->getClientOriginalName();
             $file->storeAs('public/paciente', $nameimg);
@@ -133,5 +133,12 @@ class PatientController extends Controller
         $patient->delete();
         
         return redirect()->route('patient.index')->with('success', true);
+    }
+
+    public function deleteacount(Patient $patient)
+    {
+        $patient->delete();
+        
+        return redirect()->route('login')->with('success', true);
     }
 }

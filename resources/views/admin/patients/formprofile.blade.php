@@ -11,14 +11,14 @@
 @php $id = Auth::guard('patient')->user()->helfcareplan_id @endphp
 
 <div class="text-center row">
-    <div class="form-group col-sm-12 col-md-4">
+    <div class="form-group col-sm-12 col-md-4" @if(isset($full)) {!! $full !!} @endif>
         <label for="name" class="required">Nome</label>
         <input type="text" name="name" id="name" autofocus class="form-control" 
         required value="{{ Auth::guard('patient')->user()->name }}" 
        >
     </div>
 
-    <div class="form-group col-sm-12 col-md-4">
+    <div class="form-group col-sm-12 col-md-4" @if(isset($full)) {!! $full !!} @endif>
         <label for="email" class="required">Email</label>
         <input type="email" name="email" id="email" autofocus class="form-control" 
         required value="{{ Auth::guard('patient')->user()->email }}"
@@ -28,10 +28,10 @@
     <div class="form-group col-sm-12 col-md-4" @if(isset($full)) {!! $full !!} @endif>
         <label for="password" class="required">Senha</label>
         <input type="password" name="password" id="password" autofocus class="form-control" value="{{ Auth::guard('patient')->user()->password }}"
-         required>
+         required >
     </div>
     
-    <div class="form-group col-sm-12 col-md-4">
+    <div class="form-group col-sm-12 col-md-4" @if(isset($full)) {!! $full !!} @endif>
         <label for="wasbornat" class="required">Data de Nascimento</label>
         <input type="date" name="wasbornat" id="wasbornat" autofocus class="form-control"
          required value="{{ Auth::guard('patient')->user()->wasbornat }}"
@@ -68,10 +68,8 @@
 
     <div class="form-group col-sm-12 col-md-4">
         <label for="pic" class="required">Foto</label>
-        <input type="file" name="pic" id="pic" autofocus class="form-control"
-         value="{{asset('storage/paciente/' . Auth::guard('patient')->user()->pic)}}"
-       required>
-        <img class="w-1/5 rounded-circle" src="{{asset('storage/paciente/' . Auth::guard('patient')->user()->pic)}}">
+        <input type="file" name="pic" id="pic" autofocus class="form-control">
+        <img src="{{asset('storage/paciente/' . Auth::guard('patient')->user()->pic)}}">
     </div>
 
     <div class="form-group col-sm-12 col-md-4 ml-15 mt-3">

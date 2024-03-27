@@ -111,4 +111,11 @@ class DoctorController extends Controller
 
         return redirect()->route('doctor.index')->with('success',true);
     }
+
+    public function deleteacount(Doctor $doctor)
+    {
+        $doctor->delete();
+        
+        return redirect()->route('login')->with('success', true);
+    }
 }
