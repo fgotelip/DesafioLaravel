@@ -14,7 +14,7 @@
         @method('PUT')
         @csrf
         @include('admin.patients.formprofile', [ 'botao' => '<input class="btn btn-primary mt-5"
-         type="submit" value="Editar">','botao2' => '<a class="btn btn-secondary mt-5" 
+         type="submit" value="Editar">','botao2' => '<a class="btn btn-secondary mt-5"
          href="/dashboard">Voltar</a>'])
     </form>
     @php $id=Auth::guard('patient')->user()->id @endphp
