@@ -8,7 +8,7 @@
 @endif
 
 <div class="text-center row">
-            
+
     <div class="form-group col-sm-12 col-md-4 ml-15 mt-3">
         <label for="specialty_id">Procedimento</label>
         <select class="form-group" name="specialty_id" id="specialty_id" >
@@ -35,38 +35,29 @@
 
     <div class="form-group col-sm-12 col-md-4">
         <label for="inicialtime" class="required">Inicío</label>
-        <input type="datetime-local" name="inicialtime" id="inicialtime" autofocus class="form-control" 
+        <input type="datetime-local" name="inicialtime" id="inicialtime" autofocus class="form-control"
         required>
     </div>
 
     <div class="form-group col-sm-12 col-md-4">
         <label for="finaltime" class="required">Fim</label>
-        <input type="datetime-local" name="finaltime" id="finaltime" autofocus class="form-control" 
-        required>
+        <input type="datetime-local" name="finaltime" id="finaltime" autofocus class="form-control">
     </div>
 
     <div class="form-group col-sm-12 col-md-4 ml-15 mt-3">
-        <label for="value">Valor</label>
-        <select class="form-group" name="value" id="value">
-            <option value="">Selecione</option>
-            @foreach($specialties as $specialty)
-                    value="{{$specialty->value}}">{{$specialty->value}}</option>
-            @endforeach
-
-        </select>
+        <label for="valor">Valor:</label>
+        <input type="text" id="valor" readonly>
     </div>
 
-   
 
-    
+
+
 
     <div class="text-center mt-5">
-        @if(isset($botao))
-            {!! $botao !!}
-        @endif
-        @if(isset($botao2))
-            {!! $botao2 !!}
-        @endif
+        <input class="btn btn-primary"
+        type="submit" value="Agendar">
+        <a class="btn btn-secondary"
+         href="/procedimentocirugico/paciente">Voltar</a>
     </div>
 
 
@@ -87,7 +78,7 @@ $(document).on('change', '#specialty_id', function(){
                     }
                 }
             });
-        
-        
+
+
         });
 </script>

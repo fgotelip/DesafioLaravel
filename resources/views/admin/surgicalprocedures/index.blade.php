@@ -9,7 +9,7 @@
 @endsection
 
 <div class="p-3">
-            <a href="{{url("/dashboard")}}" class="no-underline text-black"><x-dashboard><x-texto>Página inicial</x-texto></x-dashboard></a>
+            <a href="{{url("/dashboard/paciente")}}" class="no-underline text-black"><x-dashboard><x-texto>Página inicial</x-texto></x-dashboard></a>
 </div>
 
 @section('link')
@@ -36,7 +36,7 @@
         <td>{{$surgicalprocedure->inicialtime}}</td>
         <td>
           <div class="flex">
-              <a href="{{url("procedimentocirugico/$surgicalprocedure->id")}}" class="p-4 text-black"><x-read></x-read></a>
+              <a href="{{url("procedimentocirugico/paciente/$surgicalprocedure->id")}}" class="p-4 text-black"><x-read></x-read></a>
               <button type="button" data-bs-toggle="modal" data-bs-target="#ModalDelete{{$surgicalprocedure->id}}" class="p-4">
                 <x-delete></x-delete>
                 </button>

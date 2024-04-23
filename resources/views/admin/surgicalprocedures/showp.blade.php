@@ -9,5 +9,5 @@
 @endsection
 
 @section('content')
-        @include('admin.surgicalprocedures.form')
+        @include('admin.surgicalprocedures.formp')
 @endsection

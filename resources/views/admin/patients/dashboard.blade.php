@@ -6,7 +6,7 @@
     </x-slot>
 
     <x-slot name="include">@include('layouts.navi')</x-slot>
-    
+
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -15,9 +15,9 @@
                         {{ __("You're logged in!") }}
                     </div>
                 </div>
-            
+
                 <div class="text-center mt-10">
-                    <a href="/procedimentocirugico">
+                    <a href="/procedimentocirugico/paciente">
                         <x-primary-button>Suas Cirurgias</x-primary-button>
                     </a>
                 </div>

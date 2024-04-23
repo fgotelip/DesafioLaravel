@@ -24,11 +24,11 @@ class SurgicalprocedureController extends Controller
     }
     public function indexd()
     {
-        $doctors = Doctor::all();
+        $patients = Patient::all();
         $specialties = Specialty::all();
         $surgicalprocedures = Surgicalprocedure::where('doctor_id','=', Auth::guard('doctor')->user()->id)->paginate(3);
 
-        return view('admin.surgicalprocedures.indexd', compact('surgicalprocedures','doctors','specialties'));
+        return view('admin.surgicalprocedures.indexd', compact('surgicalprocedures','patients','specialties'));
     }
 
     public function pdf()
@@ -75,9 +75,17 @@ class SurgicalprocedureController extends Controller
      */
     public function show(Surgicalprocedure $surgicalprocedure)
     {
-        $doctors = Doctor::all();
+        $patients = Patient::all();
         $specialties = Specialty::all();
-        return view('admin.surgicalprocedures.show', compact('surgicalprocedure','doctors','specialties'));
+        return view('admin.surgicalprocedures.show', compact('surgicalprocedure','patients','specialties'));
+    }
+
+    public function showp(Surgicalprocedure $surgicalprocedure)
+    {
+        $doctors = Doctor::all();
+        $patients = Patient::all();
+        $specialties = Specialty::all();
+        return view('admin.surgicalprocedures.showp', compact('surgicalprocedure','doctors','specialties','patients'));
     }
 
     public function destroy(Surgicalprocedure $surgicalprocedure)

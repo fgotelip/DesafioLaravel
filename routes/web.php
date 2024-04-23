@@ -44,18 +44,18 @@ Route::middleware(['patient'])->group(function () {
     Route::put('/pacientes/{patient}', [PatientController::class, 'update'])->name('patient.update');
     Route::get('/completar_cadastro', [PatientController::class, 'full'])->name('patient.full');
     Route::get('dashboard/paciente', [PatientController::class, 'dashboard'])->name('patient.dashboard');
-    Route::get('/procedimentocirugico', [SurgicalprocedureController::class, 'index'])->name('surgicalprocedure.index');
+    Route::get('/procedimentocirugico/paciente', [SurgicalprocedureController::class, 'index'])->name('surgicalprocedure.index');
     Route::get('/procedimentocirugico/create', [SurgicalprocedureController::class, 'create'])->name('surgicalprocedure.create');
     Route::post('/procedimentocirugico', [SurgicalprocedureController::class, 'store'])->name('surgicalprocedure.store');
-    Route::get('/procedimentocirugico/{surgicalprocedure}', [SurgicalprocedureController::class, 'show'])->name('surgicalprocedure.show');
+    Route::get('/procedimentocirugico/paciente/{surgicalprocedure}', [SurgicalprocedureController::class, 'showp'])->name('surgicalprocedure.show');
     Route::delete('/procedimentocirugico/{surgicalprocedure}', [SurgicalprocedureController::class, 'destroy'])->name('surgicalprocedure.destroy');
-    Route::get('/catchdoctors/{id}', [SurgicalprocedureController::class, 'catchdoctors'])->name('surgicalprocedurecatch');
+    Route::get('/catchdoctors/{id}', [SurgicalprocedureController::class, 'catchdoctors'])->name('surgicalprocedurecatchdoctors');
 });
 
 Route::middleware(['doctor'])->group(function () {
     Route::delete('/deletar_conta/medico/{doctor}', [DoctorController::class, 'deleteacount'])->name('doctor.delete.acount');
     Route::get('/pdf', [SurgicalprocedureController::class, 'pdf'])->name('pdf');
-    Route::get('/procedimentocirugico', [SurgicalprocedureController::class, 'indexd'])->name('surgicalprocedure.indexd');
+    Route::get('/procedimentocirugico/medico', [SurgicalprocedureController::class, 'indexd'])->name('surgicalprocedure.indexd');
     Route::get('procedimentocirugico/{surgicalprocedure}', [SurgicalprocedureController::class, 'show'])->name('surgicalprocedure.showd');
     Route::put('/medicos/{doctor}', [DoctorController::class, 'update'])->name('doctor.update');
     Route::get('/profile/medico', [DoctorController::class, 'editprofile'])->name('profile.doctor.edit');
@@ -64,7 +64,7 @@ Route::middleware(['doctor'])->group(function () {
 });
 
 Route::middleware(['auth','patient'])->group(function () {
-    
+
 });
 
 Route::middleware('auth')->group(function () {

@@ -28,29 +28,30 @@
 
 @section('thead')
   <x-th>Id</x-th>
-  <x-th>Procedimento</x-th>
+  <x-th>Paciente</x-th>
   <x-th>Data e Hora de Início</x-th>
   <th class="text-left">Ação</th>
 @endsection
 
-@php $id = Auth::guard('doctor')->user()->specialty_id @endphp
+
 
 @section('tbody')
 
   @foreach($surgicalprocedures as $surgicalprocedure)
       <tr>
         <th scope="row">{{$surgicalprocedure->id}}</th>
-        <td> @foreach($specialties as $specialty)
-                  @if($specialty->id==$id) @php $certa=$specialty @endphp @endif
-            @endforeach {{$certa->name}}</td>    
-        <td>{{$surgicalprocedure->inicialtime}}</td>  
+        @php $id = $surgicalprocedure->patient_id @endphp
+        <td> @foreach($patients as $patient)
+                  @if($patient->id==$id) @php $certa=$patient @endphp @endif
+            @endforeach {{$certa->name}}</td>
+        <td>{{$surgicalprocedure->inicialtime}}</td>
         <td>
               <a href="{{url("procedimentocirugico/$surgicalprocedure->id")}}" class="p-4 text-black"><x-read></x-read></a>
-          
-        </td>
-      </tr> 
 
-                  
+        </td>
+      </tr>
+
+
   @endforeach
 @endsection
 

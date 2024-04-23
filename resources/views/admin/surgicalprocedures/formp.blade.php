@@ -1,12 +1,12 @@
 <div class="text-center row">
-            @php $id = Auth::guard('doctor')->user()->specialty_id @endphp
+            @php $id = $surgicalprocedure->specialty_id @endphp
             @foreach($specialties as $specialty)
                   @if($specialty->id==$id) @php $certa=$specialty @endphp @endif
             @endforeach
 
-            @php $id1 = $surgicalprocedure->patient_id @endphp
-            @foreach($patients as $patient)
-                  @if($patient->id==$id1) @php $certa1=$patient @endphp @endif
+            @php $id1 = $surgicalprocedure->doctor_id @endphp
+            @foreach($doctors as $doctor)
+                  @if($doctor->id==$id1) @php $certa1=$doctor @endphp @endif
             @endforeach
 
     <div class="form-group col-sm-12 col-md-4 ml-15">
@@ -16,7 +16,7 @@
     </div>
 
     <div class="form-group col-sm-12 col-md-4 ml-15">
-        <label for="doctor_id">Paciente</label>
+        <label for="doctor_id">Medico</label>
         <input type="text" name="doctor_id" id="doctor_id" autofocus class="form-control"
         required value="{{$certa1->name}}" readonly>
     </div>
