@@ -61,7 +61,16 @@ class DoctorTest extends TestCase
         $this->put('/admin/'.$doctor->id, $doctor->toArray());
 
         $this->assertDatabaseHas('doctors', ['id' => $doctor->id, 'name' => 'Updated Name']);
+    }
 
+     /** @test */
+    public function authorized_user_can_delete_the_doctor(){
+        $this->actingAs(User::factory()->create());
 
+        $doctor = Doctor::factory()->create();
+
+        $this->delete('/medicos/'.$doctor->id);
+
+        $this->assertDatabaseMissing('doctors', ['id' => $doctor->id]);
     }
 }
