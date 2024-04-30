@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
@@ -23,8 +24,13 @@ return new class extends Migration
      */
     public function down(): void
     {
+        if (DB::getDriverName() !== 'sqlite') {
+            Schema::table('doctors', function (Blueprint $table) {
+                $table->dropForeign(['specialty_id']);
+            });
+        }
         Schema::table('doctors', function (Blueprint $table) {
-            $table->dropForeign(['specialty_id']);
+            $table->dropColumn('specialty_id');
         });
     }
 };

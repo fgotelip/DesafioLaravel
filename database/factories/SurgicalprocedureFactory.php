@@ -20,9 +20,9 @@ class SurgicalprocedureFactory extends Factory
     public function definition(): array
     {
         return [
-            'specialty_id' => Specialty::inRandomOrder()->first()->id,
-            'patient_id' => Patient::inRandomOrder()->first()->id,
-            'doctor_id' => Doctor::inRandomOrder()->first()->id,
+            'specialty_id' => Specialty::factory()->create()->id,
+            'patient_id' => Patient::factory()->create()->id,
+            'doctor_id' => Doctor::factory()->create()->id,
             'inicialtime' => fake()->dateTime($max = 'now')->format('2023-m-d H:i:s'),
             'finaltime' => fake()->dateTime($max = 'now')->format('2023-m-d H:i:s'),
             'value' => $this->faker->randomElement([

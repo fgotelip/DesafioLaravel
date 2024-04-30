@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
  */
 class DoctorFactory extends Factory
 {
+
     /**
      * Define the model's default state.
      *
@@ -35,7 +36,7 @@ class DoctorFactory extends Factory
             ]),
             'crm' => fake()->unique()->numerify('######'),
             'pic' => fake()->text(),
-            'specialty_id' => Specialty::inRandomOrder()->first()->id,
+            'specialty_id' => Specialty::factory()->create()->id,
         ];
     }
 

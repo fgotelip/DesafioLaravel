@@ -15,12 +15,12 @@ return new class extends Migration
        Schema::create('surgicalprocedures', function (Blueprint $table) {
             $table->id();
             $table->dateTime('inicialtime');
-            $table->dateTime('finaltime')->default(DB::raw('DATE_ADD(NOW(), INTERVAL 2 HOUR)'));
+            $table->dateTime('finaltime');
             $table->decimal('value', 8, 2);
             $table->timestamps();
         });
 
-        
+
     }
 
     /**
